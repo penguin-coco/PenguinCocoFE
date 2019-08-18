@@ -2,7 +2,7 @@
 
 🐧 An amazing online judge system front-end based on Vue
 
-[![Vue](https://img.shields.io/badge/vue-2.6.10-blue.svg)](https://github.com/vuejs/vue) [![element-ui](https://img.shields.io/badge/element-2.11.1-blue.svg)](https://github.com/ElemeFE/element) [![Build Status](https://travis-ci.org/music1353/CSIM-OnlineJudgeFE.svg?branch=master)](https://travis-ci.org/music1353/CSIM-OnlineJudgeFE) 
+[![Vue](https://img.shields.io/badge/vue-2.6.10-blue.svg)](https://github.com/vuejs/vue) [![element-ui](https://img.shields.io/badge/element-2.11.1-blue.svg)](https://github.com/ElemeFE/element) [![Build Status](https://travis-ci.org/penguin-coco/PenguinCocoFE.svg?branch=master)](https://travis-ci.org/penguin-coco/PenguinCocoFE) 
 
 
 
