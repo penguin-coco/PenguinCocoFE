@@ -72,11 +72,11 @@
                   <el-option v-for="item in fontSizeList" :key="item" :label="item" :value="item">
                   </el-option>
                 </el-select>
-                <el-button plain size="mini" @click="changeCodemirrorHeight" class="chbtn hidden-xs-only"><i class="fas fa-arrows-alt"></i></el-button>
-                <el-button plain size="mini" @click="copy(code)" class="chbtn hidden-xs-only"><i class="fas fa-copy"></i></el-button>
+                <el-button plain size="mini" @click="changeCodemirrorHeight" class="mirror-set-btn chbtn hidden-xs-only"><i class="fas fa-arrows-alt"></i></el-button>
+                <el-button plain size="mini" @click="copy(code)" class="mirror-set-btn chbtn hidden-xs-only"><i class="fas fa-copy"></i></el-button>
               </div>
               <codemirror v-model="code" :options="options" ref="myEditor" :style="{'font-size': fontSize+'px'}"></codemirror>
-              <el-button type="primary" @click="submitCode">submit</el-button>
+              <el-button class="submit-btn" type="primary" @click="submitCode">submit</el-button>
             </div>
           </el-col>
         </el-row>

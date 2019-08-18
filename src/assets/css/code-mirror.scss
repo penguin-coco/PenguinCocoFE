@@ -11,8 +11,17 @@
 /* codemirror-section */
 
 #codemirror-section {
-  button {
+  .setting {
+    margin-bottom: 25px;
+  }
+
+  .mirror-set-btn {
+    float: right;
     margin: 5px;
+  }
+
+  .submit-btn {
+    margin-top: 15px;
     float: right;
   }
 
