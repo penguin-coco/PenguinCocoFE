@@ -1,0 +1,124 @@
+/* xs */
+@media screen and (max-width: 768px) {
+  .hidden-xs-only {
+    display: none !important;
+  }
+
+  /* login */
+  #login-card .el-dialog {
+    width: 90% !important;
+  }
+
+  /* navbar */
+  #navbar {
+    .logo img {
+      margin-top: 10px !important;
+      width: 115px !important;
+    }
+
+    .oj-menu {
+      width: 50% !important;
+      margin-right: 0px !important;
+
+      .el-menu-item {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+
+      .el-button {
+        margin-left: 5px !important;
+        width: 23%;
+      }
+    }
+  }
+
+  /* student index */
+  #mainProblems-section .el-card {
+    height: 130px !important;
+  }
+
+  .feedback {
+    border: solid 1px #333;
+  }
+
+  .el-message-box {
+    width: 90% !important;
+  }
+
+  /* score panel */
+  .table-expand .el-form-item {
+    width: 100% !important;
+  }
+
+  /* student mypage */
+  #info-section {
+    .el-form-item {
+      margin-bottom: 0px;
+    }
+
+    .el-button {
+      width: 100% !important;
+    }
+  }
+
+  /* coding page */
+  .coding-block {
+    .setting span {
+      margin-left: 0px !important;
+    }
+
+    .setting .el-select {
+      margin-bottom: 10px;
+      width: 100% !important;
+    }
+  }
+
+  /* footer */
+  #footer {
+    padding: 0px;
+  }
+}
+
+/* sm */
+@media screen and (min-width: 769px) {
+  .hidden-sm-only {
+    display: none !important;
+  }
+}
+
+/* md */
+@media screen and (min-width: 992px) {
+  /* studnet index */
+  /* .el-card {
+    height: 10vw !important;
+    zoom: 125%;
+  } */
+
+  /* admin logo */
+  #admin-logo {
+    width: 70% !important;
+  }
+}
+
+/* lg */
+@media screen and (min-width: 1200px) {
+  /* studnet index */
+  /* .el-card {
+    height: 10vw !important;
+    zoom: 125%;
+  } */
+}
+
+/* xl */
+@media screen and (min-width: 1920px) {
+  /* studnet index */
+  #studentIndex-section .problem-card-section .el-card {
+    height: 8vw !important;
+    zoom: 125%;
+  }
+
+  /* admin logo */
+  #admin-logo {
+    width: 65% !important;
+  }
+}

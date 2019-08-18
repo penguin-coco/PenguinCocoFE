@@ -1,0 +1,22 @@
+/* table */
+.table-expand {
+  font-size: 0;
+
+  label {
+    width: 90px;
+    color: #99a9bf;
+  }
+
+  .el-form-item {
+    margin-right: 0 !important;
+    margin-bottom: 0;
+    width: 50%;
+
+    .el-rate {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

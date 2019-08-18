@@ -1,0 +1,29 @@
+#judged-section {
+  .box{
+    position: relative;
+  }
+
+  .chart {
+    z-index: 1500;
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    width: 500px;
+    height: 500px;
+  }
+
+  .handDate {
+    margin-bottom: 10px;
+  }
+
+  .judgedtime {
+    color: #909399;
+    position: absolute;
+    top: 15px;
+    right: 40px;
+  }
+
+  .el-form .el-form-item label {
+    padding-bottom: 0px;
+  }
+}

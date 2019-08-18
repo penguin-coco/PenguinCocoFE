@@ -1,29 +1,46 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import axios from 'axios'
+
+import '@/assets/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css'
+import '@/assets/css/material-icon.scss'
+
+import '@/assets/css/basic.scss'
+import '@/assets/css/layout.scss'
+import '@/assets/css/content/problem-section.scss'
+import '@/assets/css/content/judged-section.scss'
+
+export default {
+  name: 'App',
+  components: {
+    // fab
+  },
+  data() {
+    return {}
+  },
+  // vue progressbar
+  mounted () {
+    this.$Progress.finish();
+  },
+  created () {
+    this.$Progress.start()
+    this.$router.beforeEach((to, from, next) => {
+      if (to.meta.progress !== undefined) {
+        let meta = to.meta.progress
+        this.$Progress.parseMeta(meta)
+      }
+      this.$Progress.start()
+      next()
+    })
+    this.$router.afterEach((to, from) => {
+      this.$Progress.finish()
+    })
   }
 }
-</style>
+</script>

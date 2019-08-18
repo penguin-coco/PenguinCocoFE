@@ -1,0 +1,39 @@
+@import './main.scss';
+
+#navbar {
+  @include navbar-basic;
+
+  .el-menu {
+    float: right;
+    margin-right: 30px;
+  }
+
+  /* backstage navbar的樣式 */
+  .logo {
+    width:200px;
+    height:60px;
+    margin-left:0px;
+    text-align:center;
+    border-right:solid 1px #e6e6e6;
+    line-height:none;
+  }
+  
+  .courseName {
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    margin-left: 35px;
+  }
+}
+
+
+/* Safari 10.1+ */
+
+@media not all and (min-resolution:.001dpcm) {
+  #navbar .el-menu {
+    float: right;
+    margin-right: 30px;
+    width: 22vw;
+  }
+}

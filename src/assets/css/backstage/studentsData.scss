@@ -1,0 +1,33 @@
+/* filter input */
+.box-square .filterInput {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+/* 匯出csv */
+#tocsv-btn {
+  margin-top: 20px;
+  float: right;
+}
+
+/* 學生做題資訊 dialog */
+#student-dialog {
+  .statistic-block {
+    height: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .statistic-block .title {
+    color: white;
+  }
+
+  .statistic-block .statistic {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 30px;
+  }
+}

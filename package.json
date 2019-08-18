@@ -1,6 +1,6 @@
 {
   "name": "penguin-coco",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,10 +8,23 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
+    "echarts": "^4.0.4",
+    "element-ui": "^2.11.1",
+    "json2csv": "^4.0.2",
+    "jsonexport": "^2.4.1",
+    "papaparse": "^4.5.0",
+    "v-charts": "^1.16.8",
     "vue": "^2.6.10",
+    "vue-code-diff": "^0.0.4",
+    "vue-codemirror-lite": "^1.0.4",
+    "vue-markdown": "^2.2.4",
+    "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuejs-countdown": "^0.2.1",
+    "vuex": "^3.0.1",
+    "vuex-persist": "^2.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.10.0",
