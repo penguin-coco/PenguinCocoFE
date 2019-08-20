@@ -8,13 +8,18 @@
 <script>
 import axios from 'axios'
 
-import '@/assets/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css'
+import '@/assets/css/vendors/fontawesome-free-5.0.13/web-fonts-with-css/css/fontawesome-all.min.css'
 import '@/assets/css/material-icon.scss'
 
-import '@/assets/css/basic.scss'
+import '@/assets/css/layout/navheader.scss'
+import '@/assets/css/layout/sidenav.scss'
+// problem's style
+import '@/assets/css/components/problem-section.scss'
+import '@/assets/css/components/problem-tag-selector.scss'
+
+import '@/assets/css/base/basic.scss'
 import '@/assets/css/layout.scss'
-import '@/assets/css/content/problem-section.scss'
-import '@/assets/css/content/judged-section.scss'
+import '@/assets/css/layout/rwd.scss'
 
 export default {
   name: 'App',

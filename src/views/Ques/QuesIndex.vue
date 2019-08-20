@@ -64,7 +64,7 @@
         <el-col :span="20" :offset="2">
           <div class="problem-name">
             <span v-text="quesData.name"></span>
-            <span v-text="quesData.id" style="font-size: 16px; color: #909399; font-weight: 500;"></span>
+            <span class="id" v-text="quesData.id"></span>
             <span class="tags" v-for="tag in quesData.tag">
               <el-tag size="small">{{ tag }}</el-tag>
             </span>
@@ -479,13 +479,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#viewProblemDialog .el-dialog {
-  width: 70vw;
-}
-
-#problemTagSelector {
-  width: 20vw;
-}
-</style>

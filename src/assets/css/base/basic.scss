@@ -23,6 +23,90 @@ hr {
   /* IE6 */
 }
 
+// padding & margin spacing
+$scales: (0:0px, 1:5px, 2:10px, 3:15px, 4:20px, 5:25px, 6:30px);
+@each $index, $scale in $scales {
+  // padding spacing
+  .p-#{$index} {
+    padding-top: $scale !important;
+    padding-bottom: $scale !important;
+    padding-left: $scale !important;
+    padding-right: $scale !important;
+  }
+  .px-#{$index} {
+    padding-right: $scale !important;
+    padding-left: $scale !important;
+  }
+  .py-#{$index} {
+    padding-top: $scale !important;
+    padding-bottom: $scale !important;
+  }
+  .pt-#{$index} {
+    padding-top: $scale !important;
+  }
+  .pb-#{$index} {
+    padding-bottom: $scale !important;
+  }
+  .pl-#{$index} {
+    padding-left: $scale !important;
+  }
+  .pr-#{$index} {
+    padding-right: $scale !important;
+  }
+
+  // margin spacing
+  .m-#{$index} {
+    margin-top: $scale !important;
+    margin-bottom: $scale !important;
+    margin-left: $scale !important;
+    margin-right: $scale !important;
+  }
+  .mx-#{$index} {
+    margin-right: $scale !important;
+    margin-left: $scale !important;
+  }
+  .my-#{$index} {
+    margin-top: $scale !important;
+    margin-bottom: $scale !important;
+  }
+  .mt-#{$index} {
+    margin-top: $scale !important;
+  }
+  .mb-#{$index} {
+    margin-bottom: $scale !important;
+  }
+  .ml-#{$index} {
+    margin-left: $scale !important;
+  }
+  .mr-#{$index} {
+    margin-right: $scale !important;
+  }
+}
+
+// width style
+.width-fluid {
+  width: 100%;
+}
+
+// float
+$float-scales: right, left;
+@each $var in $float-scales {
+  .float-#{$var} {
+    float: $var;
+  }
+}
+
+// text
+$text-scales: left, center, right;
+@each $var in $text-scales {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+
+
+/***********/
+
 .text-shadow {
   text-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
@@ -100,6 +184,16 @@ hr {
   border: solid 1px #DDDDDD;
   background-color: #FFF;
   /* box-shadow: 4px 4px 3px rgba(20%, 20%, 40%, 0.2); */
+
+  .filter-input {
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .tocsv-btn {
+    margin-top: 20px;
+    float: right;
+  }
 }
 
 .danger-input .el-input__inner {

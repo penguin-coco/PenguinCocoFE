@@ -149,11 +149,11 @@ import problemStateMixin from '@/mixins/problemState.mixin.js'
 import ConfirmProblemDialog from '@/components/MgmtProblem/ConfirmProblemDialog'
 import ProblemBankDialog from '@/components/MgmtProblem/ProblemBankDialog'
 
-import '@/assets/markdownParser/github.css'
-import '@/assets/markdownParser/marked.js'
-import '@/assets/markdownParser/lodash.js'
-import '@/assets/markdownParser/katex.min.css'
-import '@/assets/css/transition.scss'
+import '@/assets/css/vendors/markdownParser/github.css'
+import '@/assets/css/vendors/markdownParser/marked.js'
+import '@/assets/css/vendors/markdownParser/lodash.js'
+import '@/assets/css/vendors/markdownParser/katex.min.css'
+import '@/assets/css/base/transition.scss'
 
 export default {
   components: {

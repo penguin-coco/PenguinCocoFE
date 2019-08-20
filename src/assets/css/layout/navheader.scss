@@ -1,0 +1,118 @@
+@import '../utils/variables';
+
+@mixin navheader-basic($auth, $isShadow, $isLogoBorder:true) {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  z-index: 2000;
+  width: 100%;
+  background-color: white;
+
+  @if $isShadow {
+    box-shadow: $navheader-box-shadow;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  button {
+    margin-top: 15px;
+    margin-left: 17px;
+  }
+
+  .logo {
+    width:200px;
+    height:60px;
+    margin-left:0px;
+    text-align:center;
+    line-height:none;
+    float: left;
+
+    @if $auth == stud {
+      background-color: $sidenav-stud-bgcolor;
+    } @else if $auth == tr {
+      background-color: $sidenav-tr-bgcolor;
+    } @else if $auth == asst {
+      background-color: $sidenav-asst-bgcolor;
+    } @else if $auth == quesbk {
+      background-color: $sidenav-quesbk-bgcolor;
+    }
+
+    @if $isLogoBorder {
+      border-right: solid 1px #e6e6e6;
+    } @else {
+      border-right: 0px;
+    }
+
+    img {
+      margin-top: 8px;
+      width: 135px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  
+  .courseName {
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    font-size: 20px;
+    margin-left: 35px;
+  }
+
+  .oj-menu {
+    float: right;
+    margin-right: 30px;
+    background-color: white;
+    border-bottom: 0;
+  }
+}
+
+
+#navheader-login {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  height:100px;
+  width: 100%;
+
+  .logo {
+    margin-top: 50px;
+    margin-left: 6%;
+    border-right: none;
+  }
+
+  img {
+    margin-top: 8px;
+    width: 135px;
+  }
+}
+
+#navheader-student {
+  @include navheader-basic(stud, $isShadow:false);
+}
+
+#navheader-student-plain {
+  @include navheader-basic(stud, $isShadow:true, $isLogoBorder:false);
+}
+
+#navheader-teacher {
+  @include navheader-basic(tr, $isShadow:true);
+}
+
+#navheader-assistant {
+  @include navheader-basic(asst, $isShadow:true);
+}
+
+#navheader-quesbk {
+  @include navheader-basic(quesbk, $isShadow:true);
+}

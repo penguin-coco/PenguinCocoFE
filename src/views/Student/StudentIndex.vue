@@ -62,37 +62,37 @@
       </el-row>
 
       <el-main style="padding-top: 0px;">
-        <el-row class="problem-card-section" v-if="problemsFiltered.length>0">
-          <el-col class="problemCol" :span="24" v-loading="problemSectionLoading">
-            <el-col v-for="problem in problemsFiltered" :key="problem.problemId" :xs="24" :sm="12" :md="8" :lg="6" style="padding-right: 23px;">
+        <el-row class="problem-card-section" v-if="problemsFiltered.length>0" v-loading="problemSectionLoading">
+          <el-col :span="24" >
+            <el-col class="problem-card" v-for="problem in problemsFiltered" :key="problem.problemId" :xs="24" :sm="12" :md="8" :lg="6" style="padding-right: 23px;">
               <a href="javascript:void(0);" @click="doProblem(problem.problemId)">
-                <el-card :body-style="{ padding: '5px' }" shadow="hover">
-                  <div style="padding: 14px;">
-                    <span class="title ellipsis">{{ problem.name }}
+                <el-card class="card" shadow="hover">
+                  
+                    <span class="problem-name ellipsis">{{ problem.name }}
                       {{problem.tag}}
                       <!-- TODO: tag -->
                       <!-- <el-tag v-for="(tag, index) in problem.tag" :key="index" effect="plain" style="height:16px; line-height:16px; padding:0 3px; font-size:10px; margin-left:5px;">{{tag}}</el-tag> -->
                       <el-tag effect="plain" style="height:16px; line-height:16px; padding:0 3px; font-size:10px; margin-left:5px;">Java</el-tag>
                     </span>
                     <div class="bottom clearfix">
-                      <el-rate disabled :value="parseInt(problem.rate)"></el-rate>
+                      <el-rate class="rate" disabled :value="parseInt(problem.rate)"></el-rate>
                       <Countdown v-if="dateDiff(todayDate, problem.deadline)<1" :deadline="deadlineParse(problem.deadline)"></Countdown>
                       <div v-if="dateDiff(todayDate, problem.deadline)>=1" class="time">{{ problem.deadline }}</div>
                     </div>
                     <div class="type">{{ problem.type }}</div>
-                  </div>
+                  
                 </el-card>
               </a>
             </el-col>
           </el-col>
         </el-row>
 
-        <el-row class="none-problem" v-if="modeValue=='undo' && problemsFiltered.length==0">
+        <el-row class="none-problem" v-if="modeValue=='undo' && problemsFiltered.length==0 && problemSectionLoading==false">
           <p><img width="25"src="/static/favicon/favicon.png"> &nbsp; 全部題目都完成了喔！ 可以切換到 <span style="color:#1565C0;">已完成</span> 去查看！</p>
         </el-row>
       </el-main>
 
-      <el-footer>
+      <el-footer style="height: 50px;">
         <nav-footer-student></nav-footer-student>
       </el-footer>
     </el-container>
@@ -137,7 +137,7 @@ export default {
       typeValue: '全部',
       sortValue: '',
       // problem card section
-      problemSectionLoading: true,
+      problemSectionLoading: false,
       problemData: [],
     }
   },
@@ -208,14 +208,15 @@ export default {
   },
   methods: {
     getProblemData() {
+      this.problemSectionLoading = true;
+
       let isJudge = false;
       if (this.modeValue == 'undo') {
         isJudge = false;
       } else if (this.modeValue == 'done') {
         isJudge = true;
       }
-
-      this.problemSectionLoading = true;
+      
       apiProblemInfo({
         courseId: this.$store.state.course.courseInfo.courseId,
         type: this.typeValue,
@@ -302,8 +303,9 @@ export default {
     margin-bottom: 18px;
 
     .item {
-      padding-top:20px;
-      padding-left:20px;
+      padding-top: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px;
 
       .item-title {
         display:block;
@@ -334,23 +336,26 @@ export default {
     background-color: rgba(0, 0, 0, 0);
   }
 
-  .problemCol {
-    min-height: 200px;
-
+  .problem-card {
     a {
       min-height: 200px;
       text-decoration: none;
     }
-  }
 
-  .el-card {
-    height: 9vw;
-    position: relative;
-    transition: all ease 0.3s;
+    .card {
+      height: 11vw;
+      position: relative;
+      transition: all ease 0.3s;
+    }
 
-    .title {
-      height: 22px;
-      line-height: 22px;
+    .rate .el-rate__item i{
+      font-size: 20px;
+    }
+
+    .problem-name {
+      font-size: 17px;
+      height: 25px;
+      line-height: 25px;
       display: block;
       margin-bottom: 10px;
       text-decoration: none;

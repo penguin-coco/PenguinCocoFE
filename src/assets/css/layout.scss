@@ -4,12 +4,6 @@ aside .el-aside {
   overflow: initial;
 }
 
-/* aside內的menu .side-navbar */
-.side-navbar.el-menu  {
-  height: calc(100vh - 60px);
-  overflow: initial;
-}
-
 /* 主要呈現內容的container */
 .main-container {
   height: calc(100vh - 60px);

@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="box-square">
-    <el-input class='filterInput' v-model='filterQuery' placeholder='請輸入題目ID或名稱' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
+    <el-input class='filter-input' v-model='filterQuery' placeholder='請輸入題目ID或名稱' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
     <el-table :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" v-loading="tableLoading">
       <el-table-column type="expand">
         <template slot-scope="props">
@@ -132,32 +132,11 @@ export default {
     DiscussCorrectForm
   },
   props: ['problemData', 'tableLoading'],
-  computed: {
-    tableFiltered() {
-      let oriTable = this.problemData;
-      let filteredTable = [];
-
-      if (this.filterQuery == '') {
-        this.total= oriTable.length; // pagination
-        return oriTable
-      } else {
-        for (let i = 0; i < oriTable.length; i++) {
-          if (oriTable[i].problemId.includes(this.filterQuery) || oriTable[i].name.includes(this.filterQuery)) {
-            filteredTable.push(oriTable[i]);
-          }
-        }
-        this.total= filteredTable.length; // pagination
-        return filteredTable
-      }
-    }
-  },
   mounted() {
     this.setLanguage(this.problemData.tag);
   },
   data() {
     return {
-      // loading
-      // tableLoading: '',
       // filter
       filterQuery: '',
       // pagination
@@ -232,6 +211,25 @@ export default {
           },
           comment: ''
         }
+      }
+    }
+  },
+  computed: {
+    tableFiltered() {
+      let oriTable = this.problemData;
+      let filteredTable = [];
+
+      if (this.filterQuery == '') {
+        this.total= oriTable.length; // pagination
+        return oriTable
+      } else {
+        for (let i = 0; i < oriTable.length; i++) {
+          if (oriTable[i].problemId.includes(this.filterQuery) || oriTable[i].name.includes(this.filterQuery)) {
+            filteredTable.push(oriTable[i]);
+          }
+        }
+        this.total= filteredTable.length; // pagination
+        return filteredTable
       }
     }
   },

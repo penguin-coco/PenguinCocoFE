@@ -34,13 +34,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  .el-menu-item [class^=fas] {
-    margin-right: 5px;
-    width: 24px;
-    text-align: center;
-    font-size: 15px;
-    vertical-align: middle;
-  }
-</style>

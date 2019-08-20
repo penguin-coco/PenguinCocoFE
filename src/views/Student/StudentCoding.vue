@@ -171,7 +171,8 @@ import ProblemInfoSection from '@/components/Student/ProblemInfoSection'
 import DiscussCorrectForm from '@/components/Student/DiscussCorrectForm'
 import DiscussCorrectedCard from '@/components/Student/DiscussCorrectedCard'
 
-import '@/assets/css/code-mirror.scss'
+import '@/assets/css/components/codemirror.scss'
+import '@/assets/css/pages/Student/student-coding.scss'
 
 import "codemirror/mode/clike/clike.js"
 import "codemirror/mode/python/python.js"
@@ -189,7 +190,7 @@ import "codemirror/theme/darcula.css"
 import "codemirror/theme/blackboard.css"
 import "codemirror/theme/eclipse.css"
 // animated
-import "@/assets/animated/animate.css"
+import "@/assets/css/vendors/animated/animate.css"
 
 export default {
   components: {

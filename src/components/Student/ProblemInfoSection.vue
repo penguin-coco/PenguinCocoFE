@@ -16,7 +16,7 @@
   </el-row>
   <section id="problem-section">
     <el-row>
-      <el-col :span="22" :offset="1" class="box">
+      <el-col :span="20" :offset="2" class="box">
         <div class="problem-name">
           <span v-text="data.name"></span>
           <el-rate allow-half v-model="data.rate" @change="changeRate" :disabled="data.judged!=true"></el-rate>

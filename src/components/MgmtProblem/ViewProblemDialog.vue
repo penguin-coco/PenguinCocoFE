@@ -6,7 +6,7 @@
         <el-col :span="20" :offset="2">
           <div class="problem-name">
             <span v-text="data.name"></span>
-            <span v-text="data.id" style="font-size: 16px; color: #909399; font-weight: 500;"></span>
+            <span class="id" v-text="data.id"></span>
             <span class="tags" v-for="tag in data.tag">
               <el-tag size="small">{{ tag }}</el-tag>
             </span>

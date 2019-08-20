@@ -110,7 +110,6 @@ import {apiCreateTeam} from '@/apis/team.js'
 
 import DateUtil from '@/utils/DateUtil.js'
 
-
 export default {
   components: {},
   props: ['visible', 'data'],

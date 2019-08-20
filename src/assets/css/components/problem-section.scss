@@ -1,8 +1,6 @@
-#problem-section {
-  .box {
-    position: relative;
-  }
+@import '../utils/variables';
 
+#problem-section {
   .problem-name {
     display: block;
     margin-bottom: 20px;
@@ -10,9 +8,16 @@
     font-weight: 700;
     position: relative;
 
+    .id {
+      margin-left: 10px;
+      font-size: 16px;
+      color: $secondary-text-color;
+      font-weight: 500;
+    }
+
     .type {
       display: block;
-      color: #888888;
+      color: $secondary-text-color;
       font-size: 15px;
       font-weight: 400;
       position: absolute;
@@ -22,7 +27,7 @@
 
     .deadline {
       display: block;
-      color: #888888;
+      color: $secondary-text-color;
       font-size: 15px;
       font-weight: 400;
       position: absolute;
@@ -54,7 +59,7 @@
 
     .title {
       font-size: 20px;
-      color: #277ee2;
+      color: $primary-dark-text-color;
     }
 
     .content {
@@ -65,5 +70,4 @@
       margin-top: 10px;
     }
   }
-
 }

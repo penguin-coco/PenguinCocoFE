@@ -1,0 +1,12 @@
+.side-navbar.el-menu  {
+  height: calc(100vh - 60px);
+  overflow: initial;
+}
+
+.side-navbar .el-menu-item [class^=fas] {
+  margin-right: 5px;
+  width: 24px;
+  text-align: center;
+  font-size: 15px;
+  vertical-align: middle;
+}

@@ -206,11 +206,11 @@ import NavHeaderQues from '@/components/Ques/NavHeaderQues'
 import SideNavQues from '@/components/Ques/SideNavQues'
 import PageNameBreadcrumb from '@/components/MgmtContent/PageNameBreadcrumb'
 
-import '@/assets/markdownParser/github.css'
-import '@/assets/markdownParser/marked.js'
-import '@/assets/markdownParser/lodash.js'
-import '@/assets/markdownParser/katex.min.css'
-import '@/assets/css/transition.scss'
+import '@/assets/css/vendors/markdownParser/github.css'
+import '@/assets/css/vendors/markdownParser/marked.js'
+import '@/assets/css/vendors/markdownParser/lodash.js'
+import '@/assets/css/vendors/markdownParser/katex.min.css'
+import '@/assets/css/base/transition.scss'
 
 export default {
   components: {

@@ -52,8 +52,8 @@
               <div class="center">
                 <el-progress type="circle" :percentage="donePercent"></el-progress>
               </div>
-              <el-row style="margin-top: 16px;">
-                <el-col :span="18" :offset="3">
+              <el-row style="margin-top: 16px;" justify="center">
+                <el-col :span="24">
                   <el-col :span="8" style="text-align:center;">
                     <span class="done">已完成</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{user.doneNum}}</span>
