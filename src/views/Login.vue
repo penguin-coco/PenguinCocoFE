@@ -89,12 +89,25 @@ export default {
     }
   },
   mounted() {
-    // navbar
-    window.addEventListener('scroll', this.navController);
-    // checkLogin
     this.checkLogin();
   },
   methods: {
+    checkLogin() {
+      apiCheckLogin().then((response) => {
+        let res = response.data;
+        if (res.status == "200") {
+          if (res.result.authority == 'student') {
+            this.$router.push("/student/courseList");
+          } else if (res.result.authority == 'admin') {
+            this.$router.push("/admin/index");
+          } else if (res.result.authority == 'teacher') {
+            this.$router.push("/teacher/courseList");
+          } else if (res.result.authority == 'assistant') {
+            this.$router.push("/assistant/courseList");
+          }
+        }
+      });
+    },
     // login form
     login() {
       if (this.loginForm.account == '') {
@@ -137,22 +150,6 @@ export default {
         });
       }
     },
-    checkLogin() {
-      apiCheckLogin().then((response) => {
-        let res = response.data;
-        if (res.status == "200") {
-          if (res.result.authority == 'student') {
-            this.$router.push("/student/courseList");
-          } else if (res.result.authority == 'admin') {
-            this.$router.push("/admin/index");
-          } else if (res.result.authority == 'teacher') {
-            this.$router.push("/teacher/courseList");
-          } else if (res.result.authority == 'assistant') {
-            this.$router.push("/assistant/courseList");
-          }
-        }
-      });
-    }
   }
 }
 </script>

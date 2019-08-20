@@ -233,7 +233,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+#confirmProblemDialog .el-dialog {
+  width: 60vw;
+}
+
 #confirmProblemDialog .el-loading-mask {
   height: 160% !important;
 }
