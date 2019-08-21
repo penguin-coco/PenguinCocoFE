@@ -64,4 +64,18 @@ export default class GeneralUtil {
     }
     return temp
   }
+
+  /**
+   * @desc 四捨五入
+   * @param {string} x
+   * @return {float} 
+   */
+  static toDecimal(x) { 
+    var f = parseFloat(x); 
+    if (isNaN(f)) { 
+      return; 
+    } 
+    f = Math.round(x*100)/100; 
+    return f; 
+  }
 }

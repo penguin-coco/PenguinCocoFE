@@ -24,7 +24,7 @@
                 <span><el-rate v-model="props.row.rate" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate></span>
             </el-form-item>
             <el-form-item label="正確率">
-                <span>{{ (props.row.correctRate*100).toFixed(2) }}%</span>
+                <span>{{ parseInt(props.row.correctRate*100).toFixed(2) }}%</span>
             </el-form-item>
             <el-form-item label="繳交期限">
                 <span>{{ props.row.deadline }}</span>
