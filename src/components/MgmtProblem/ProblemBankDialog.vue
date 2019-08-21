@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-dialog id="problemBankDialog" title="題庫列表" :visible.sync="myVisible" @close="closeDialog">
+  <el-dialog id="problemBankDialog" title="題庫列表" :visible.sync="myVisible" width="70vw" @close="closeDialog">
     <!-- search select -->
     <div v-if="viewProblemActive==false">
       <el-select id="problemTagSelector" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
@@ -162,6 +162,7 @@ export default {
   methods: {
     closeDialog() {
       this.myVisible = false;
+      this.viewProblemActive = false; // 返回到題庫列表
       this.selectedProblemId  = '';
     },
     // pagination
