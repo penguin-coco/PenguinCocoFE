@@ -11,7 +11,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb pageName="意見回饋"></page-name-breadcrumb>
-          <el-row class="box-square">
+          <el-row class="penguin-box">
             <el-col :span="20" :offset="2">
               <el-table :data="feedbackTableData" height="70vh" style="width: 100%;">
                 <el-table-column prop="account" label="學號" width="180">

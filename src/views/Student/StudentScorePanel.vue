@@ -69,7 +69,7 @@
               <el-table-column label="題目ID" prop="problemId"></el-table-column>
               <el-table-column label="題目名稱">
                 <template slot-scope="scope">
-                  <a class="id-hyperlink" href="javascript:void(0)" @click="doProblem(scope.row)">{{ scope.row.problemName }}</a>
+                  <a class="hyperlink" href="javascript:void(0)" @click="doProblem(scope.row)">{{ scope.row.problemName }}</a>
                   <el-tooltip class="item" effect="dark" content="最佳代碼！" placement="top">
                     <span v-if="scope.row.isBestCode" class="bestCode">&nbsp;<i class="fas fa-crown"></i></span>
                   </el-tooltip>
@@ -91,7 +91,7 @@
       </el-row>
       </el-main>
 
-      <el-footer style="height:50px;">
+      <el-footer>
         <nav-footer-student></nav-footer-student>
       </el-footer>
     </el-container>
@@ -227,7 +227,6 @@ export default {
 <style>
 #studentIndex-scorePanel .items-nav {
   width: 95%;
-  backgroud-color: white;
   border-bottom: none;
 }
 

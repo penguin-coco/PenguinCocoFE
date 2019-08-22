@@ -2,24 +2,24 @@
 <div>
   <el-row>
     <el-col :span="22" :offset="1">
-      <el-alert style="margin-bottom: 15px;" effect="dark" v-if="data.type=='討論題'"
+      <el-alert class="mb-3" effect="dark" v-if="data.type=='討論題'"
         title="討論題 - 學生互評"
         type="success"
         description="送出此題程式碼後，需要批改同學的程式碼並給分！">
       </el-alert>
-      <el-alert style="margin-bottom: 15px;" effect="dark" v-if="showPatternFlag"
+      <el-alert class="mb-3" effect="dark" v-if="showPatternFlag"
         title="Pattern - 程式須包含指定片段"
         type="warning"
         description="題目說明欄中的Pattern，指定了同學在寫程式碼時，必須包含的程式片段(Pattern)，否則將會無法送出成績！">
       </el-alert>
     </el-col>
   </el-row>
-  <section id="problem-section">
+  <section id="problem-info-section">
     <el-row>
-      <el-col :span="22" :offset="1" class="box">
-        <div class="problem-name">
-          <span v-text="data.name"></span>
-          <el-rate allow-half v-model="data.rate" @change="changeRate" :disabled="data.judged!=true"></el-rate>
+      <el-col class="penguin-box box-shadow-heavy" :span="22" :offset="1">
+        <div class="problem-header">
+          <span class="penguin-box-title" v-text="data.name"></span>
+          <el-rate class="rate" allow-half v-model="data.rate" @change="changeRate" :disabled="data.judged!=true"></el-rate>
           <span class="tags" v-for="tag in data.tag">
             <el-tag size="small">{{ tag }}</el-tag>
           </span>

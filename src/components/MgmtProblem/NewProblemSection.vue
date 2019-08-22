@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-row class="box-square" id="newproblem-section">
+  <el-row class="penguin-box" id="newproblem-section">
     <el-col :span="20" :offset="2" style="margin-bottom: 10px;">
       <el-button type="warning" icon="fas fa-book" round @click="viewProblemBank"> 從題庫匯入</el-button>
     </el-col>
@@ -149,11 +149,8 @@ import problemStateMixin from '@/mixins/problemState.mixin.js'
 import ConfirmProblemDialog from '@/components/MgmtProblem/ConfirmProblemDialog'
 import ProblemBankDialog from '@/components/MgmtProblem/ProblemBankDialog'
 
-import '@/assets/css/vendors/markdownParser/github.css'
 import '@/assets/css/vendors/markdownParser/marked.js'
 import '@/assets/css/vendors/markdownParser/lodash.js'
-import '@/assets/css/vendors/markdownParser/katex.min.css'
-import '@/assets/css/base/transition.scss'
 
 export default {
   components: {

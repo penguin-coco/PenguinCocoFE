@@ -12,7 +12,7 @@
   background-color: white;
 
   @if $isShadow {
-    box-shadow: $navheader-box-shadow;
+    box-shadow: $box-shadow-light;
   }
 
   a {

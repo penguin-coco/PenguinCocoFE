@@ -1,0 +1,31 @@
+#discuss-corrected-card {
+  .block {
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+
+    .small-title {
+      display: inline-block;
+      font-size: 16px;
+      text-align: center;
+      margin-top: 6px;
+      color: #303133;
+    }
+
+    .score {
+      color: #303133;
+      text-align: center;
+      width:80%;
+      margin-top: 4px;
+      margin-bottom: 0px;
+      margin-left: 15px;
+      font-size: 18px;
+      border: 1px #DCDFE6 solid;
+      border-radius: 10px;
+    }
+  }
+
+  .border-dashed {
+    border-bottom: 1px dashed #EBEEF5;
+  }
+
+}

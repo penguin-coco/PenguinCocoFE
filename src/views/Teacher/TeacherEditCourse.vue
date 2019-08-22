@@ -12,7 +12,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb pageName="編輯課程" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="box-square" id="teacherEditCourse-section">
+          <el-row class="penguin-box" id="teacherEditCourse-section">
             <el-col :span="12" :key="item.courseId" style="padding-right: 23px; padding-bottom: 30px;" v-for="item in courseList">
               <el-card class="box-card" shadow="hover">
                 <div slot="header" class="clearfix">

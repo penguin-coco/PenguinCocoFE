@@ -13,7 +13,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb :pageName="this.$store.state.course.courseInfo.courseName" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="box-square">
+          <el-row class="penguin-box">
             <el-row :gutter="25">
               <el-col :span="8" v-for="item in oprateList" :key="item" style="margin-bottom: 15px;">
                 <a href="javascript:void(0);" @click="toProblemsData(item)" style="text-decoration: none;">
@@ -23,7 +23,7 @@
             </el-row>
           </el-row>
         </el-main>
-        <el-footer style="height:50px;">
+        <el-footer>
           <nav-footer></nav-footer>
         </el-footer>
       </el-container>

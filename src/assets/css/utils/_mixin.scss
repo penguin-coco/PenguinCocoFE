@@ -5,3 +5,13 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
+
+@mixin hyperlink {
+  text-decoration: none;
+  color: $main-text-color;
+  transition: $quick-transition;
+
+  &:hover {
+    color: $primary-text-color;
+  }
+}

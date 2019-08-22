@@ -30,8 +30,6 @@ import SideNavCourseIndexTeacher from '@/components/Teacher/SideNavCourseIndexTe
 import NavFooter from '@/components/NavFooter'
 import StudentsDataSection from '@/components/MgmtContent/StudentsDataSection'
 
-import '@/assets/css/backstage/studentsData.scss'
-
 export default {
   components: {
     NavHeaderTeacher,

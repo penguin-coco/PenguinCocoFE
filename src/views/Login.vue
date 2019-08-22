@@ -71,8 +71,6 @@ import {apiLogin, apiCheckLogin} from '@/apis/base.js'
 
 import NavFooter from '@/components/NavFooter.vue'
 
-import '@/assets/css/pages/login.scss'
-
 export default {
   components: {
     NavFooter

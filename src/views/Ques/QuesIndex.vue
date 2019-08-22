@@ -11,7 +11,7 @@
       <el-container>
         <el-main class="main-container">
           <page-name-breadcrumb pageName="題目列表" :isBreadcrumb="false"></page-name-breadcrumb>
-          <div class="box-square">
+          <div class="penguin-box">
             <!-- search select -->
             <el-select id="problemTagSelector" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
               <el-option-group
@@ -30,7 +30,7 @@
               <el-table-column label="題目 ID" prop="id"></el-table-column>
               <el-table-column label="題目名稱">
                 <template slot-scope="scope">
-                  <a class="id-hyperlink" href="javascript:void(0)" @click="getProblemInfo(scope.row)">{{ scope.row.name }}</a>
+                  <a class="hyperlink" href="javascript:void(0)" @click="getProblemInfo(scope.row)">{{ scope.row.name }}</a>
                 </template>
               </el-table-column>
               <el-table-column label="題目類型" prop="category"></el-table-column>

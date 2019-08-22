@@ -11,7 +11,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb pageName="新增題目" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="box-square">
+          <el-row class="penguin-box">
             <el-col :span="20" :offset="2">
               <el-form :model="problemData" label-width="100px" label-position="top">
                 <el-row>
@@ -206,11 +206,8 @@ import NavHeaderQues from '@/components/Ques/NavHeaderQues'
 import SideNavQues from '@/components/Ques/SideNavQues'
 import PageNameBreadcrumb from '@/components/MgmtContent/PageNameBreadcrumb'
 
-import '@/assets/css/vendors/markdownParser/github.css'
 import '@/assets/css/vendors/markdownParser/marked.js'
 import '@/assets/css/vendors/markdownParser/lodash.js'
-import '@/assets/css/vendors/markdownParser/katex.min.css'
-import '@/assets/css/base/transition.scss'
 
 export default {
   components: {

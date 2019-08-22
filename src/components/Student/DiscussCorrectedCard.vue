@@ -1,7 +1,7 @@
 <template>
 <div>
-  <el-col :span="11" v-for="stud in data" :key="stud.studentAccount" style="margin: 10px;">
-    <el-card class="box-card" style="margin-top: 15px; " shadow="hover">
+  <el-col id="discuss-corrected-card" class="m-2" :span="11" v-for="stud in data" :key="stud.studentAccount">
+    <el-card class="box-card mt-3" shadow="hover">
       <div class="text item">
         <el-row class="block border-dashed">
           <el-col :span="6">
@@ -13,7 +13,7 @@
           <el-col :span="4">
             <p class="score">{{stud.correctValue.score}}</p>
           </el-col>
-          <el-col :span="18" :offset="6" style="margin-top: 5px;">
+          <el-col class="mt-1" :span="18" :offset="6">
             <el-input readonly type="textarea" :rows="2" resize="none" v-model="stud.correctValue.comment"></el-input>
           </el-col>
         </el-row>
@@ -27,7 +27,7 @@
           <el-col :span="4">
             <p class="score">{{stud.readValue.score}}</p>
           </el-col>
-          <el-col :span="18" :offset="6" style="margin-top: 5px;">
+          <el-col class="mt-1" :span="18" :offset="6">
             <el-input readonly type="textarea" :rows="2" resize="none" v-model="stud.readValue.comment"></el-input>
           </el-col>
         </el-row>
@@ -41,7 +41,7 @@
           <el-col :span="4">
             <p class="score">{{stud.skillValue.score}}</p>
           </el-col>
-          <el-col :span="18" :offset="6" style="margin-top: 5px;">
+          <el-col class="mt-1" :span="18" :offset="6">
             <el-input readonly type="textarea" :rows="2" resize="none" v-model="stud.skillValue.comment"></el-input>
           </el-col>
         </el-row>
@@ -55,7 +55,7 @@
           <el-col :span="4">
             <p class="score">{{stud.completeValue.score}}</p>
           </el-col>
-          <el-col :span="18" :offset="6" style="margin-top: 5px;">
+          <el-col class="mt-1" :span="18" :offset="6">
             <el-input readonly type="textarea" :rows="2" resize="none" v-model="stud.completeValue.comment"></el-input>
           </el-col>
         </el-row>
@@ -69,7 +69,7 @@
           <el-col :span="4">
             <p class="score">{{stud.wholeValue.score}}</p>
           </el-col>
-          <el-col :span="18" :offset="6" style="margin-top: 5px;">
+          <el-col class="mt-1" :span="18" :offset="6">
             <el-input readonly type="textarea" :rows="2" resize="none" v-model="stud.wholeValue.comment"></el-input>
           </el-col>
         </el-row>
@@ -77,7 +77,7 @@
           <el-col :span="6">
             <span class="small-title">總評論</span>
           </el-col>
-          <el-col :span="18" style="margin-top: 5px;">
+          <el-col class="mt-1" :span="18">
             <el-input readonly type="textarea" :rows="2" resize="none" v-model="stud.comment"></el-input>
           </el-col>
         </el-row>

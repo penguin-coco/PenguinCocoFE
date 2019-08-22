@@ -1,3 +1,5 @@
+@import '../utils/variables';
+
 * {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -23,73 +25,81 @@ hr {
   /* IE6 */
 }
 
+// display
+.d-block {
+  display: block;
+}
+.d-inline-block {
+  display: inline-block;
+}
+
 // padding & margin spacing
-$scales: (0:0px, 1:5px, 2:10px, 3:15px, 4:20px, 5:25px, 6:30px);
-@each $index, $scale in $scales {
+@each $name, $scale in $pm-scales {
   // padding spacing
-  .p-#{$index} {
+  .p-#{$name} {
     padding-top: $scale !important;
     padding-bottom: $scale !important;
     padding-left: $scale !important;
     padding-right: $scale !important;
   }
-  .px-#{$index} {
+  .px-#{$name} {
     padding-right: $scale !important;
     padding-left: $scale !important;
   }
-  .py-#{$index} {
+  .py-#{$name} {
     padding-top: $scale !important;
     padding-bottom: $scale !important;
   }
-  .pt-#{$index} {
+  .pt-#{$name} {
     padding-top: $scale !important;
   }
-  .pb-#{$index} {
+  .pb-#{$name} {
     padding-bottom: $scale !important;
   }
-  .pl-#{$index} {
+  .pl-#{$name} {
     padding-left: $scale !important;
   }
-  .pr-#{$index} {
+  .pr-#{$name} {
     padding-right: $scale !important;
   }
 
   // margin spacing
-  .m-#{$index} {
+  .m-#{$name} {
     margin-top: $scale !important;
     margin-bottom: $scale !important;
     margin-left: $scale !important;
     margin-right: $scale !important;
   }
-  .mx-#{$index} {
+  .mx-#{$name} {
     margin-right: $scale !important;
     margin-left: $scale !important;
   }
-  .my-#{$index} {
+  .my-#{$name} {
     margin-top: $scale !important;
     margin-bottom: $scale !important;
   }
-  .mt-#{$index} {
+  .mt-#{$name} {
     margin-top: $scale !important;
   }
-  .mb-#{$index} {
+  .mb-#{$name} {
     margin-bottom: $scale !important;
   }
-  .ml-#{$index} {
+  .ml-#{$name} {
     margin-left: $scale !important;
   }
-  .mr-#{$index} {
+  .mr-#{$name} {
     margin-right: $scale !important;
   }
 }
 
 // width style
-.width-fluid {
-  width: 100%;
+@each $name, $var in $width-scales {
+  .width-#{$name} {
+    width: $var;
+  }
 }
 
 // float
-$float-scales: right, left;
 @each $var in $float-scales {
   .float-#{$var} {
     float: $var;
@@ -97,181 +107,21 @@ $float-scales: right, left;
 }
 
 // text
-$text-scales: left, center, right;
 @each $var in $text-scales {
   .text-#{$var} {
     text-align: $var;
   }
 }
 
-
-/***********/
-
-.text-shadow {
-  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+// box-shadow
+.box-shadow-light {
+  box-shadow: $box-shadow-light;
+} 
+.box-shadow-heavy {
+  box-shadow: $box-shadow-heavy;
 }
 
-.change-line {
-  white-space: pre-wrap;
-  /* word-wrap: break-word; */
-}
-
-.ellipsis {
-  width: 90%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.space {
-  padding: 50px;
-}
-
-.sm-space {
-  padding: 20px;
-}
-
-.res-space {
-  padding: 6%;
-}
-
-.center {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#title {
-  text-align: center;
-  font-size: 30px;
-  padding-bottom: 30px;
-}
-
-#sm-title {
-  text-align: center;
-  font-size: 18px;
-  padding-bottom: 20px;
-}
-
-.least-shadow-box {
-  border-radius: 3px;
-  background-color: #FFF;
-  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
-}
-
-.box {
-  padding: 30px;
-  margin-bottom: 15px;
-  border: solid 1px #DDDDDD;
-  border-radius: 5px;
-  background-color: #FFF;
-  box-shadow: 4px 4px 3px rgba(20%, 20%, 40%, 0.2);
-}
-
-.sm-box {
-  padding: 20px;
-  margin-bottom: 15px;
-  border: solid 1px #DDDDDD;
-  border-radius: 5px;
-  background-color: #FFF;
-  box-shadow: 4px 4px 3px rgba(20%, 20%, 40%, 0.2);
-}
-
-.box-square {
-  padding: 30px;
-  margin-bottom: 15px;
-  border: solid 1px #DDDDDD;
-  background-color: #FFF;
-  /* box-shadow: 4px 4px 3px rgba(20%, 20%, 40%, 0.2); */
-
-  .filter-input {
-    width: 200px;
-    margin-bottom: 20px;
-  }
-
-  .tocsv-btn {
-    margin-top: 20px;
-    float: right;
-  }
-}
-
-.danger-input .el-input__inner {
-  border-color: #F56C6C;
-}
-
-.success-textarea .el-textarea__inner {
-  border-color: #67C23A;
-}
-
-.bestcode::after {
-  content: '你是目前的最佳程式碼！！';
-  color: #67C23A;
-}
-
-/* new design */
-.items-nav {
-  color: #606266;
-  border-bottom: 1px solid #E4E7ED;
-  height: 50px;
-  line-height: 50px;
-  margin-bottom: 30px;
-
-  .item {
-    display: inline-block;
-    margin-right: 20px;
-    font-size: 24px;
-    border-bottom: 2px solid #67C23A;
-  }
-
-  .item-span {
-    font-size:20px;
-    margin-left:15px;
-  }
-
-  .item-float-right {
-    float: right;
-  }
-}
-
-
-.id-hyperlink {
-  text-decoration: none;
-  color: #606266;
-  transition: all .3s ease;
-
-  &:hover {
-    color: #409EFF;
-  }
-}
-
-/* backstage header */
-.back-stage-header {
-  background-color: white;
-  border: solid 1px #DDDDDD;
-  border-bottom: 0px;
-  height: 60px;
-  line-height: 60px;
-
-  .title {
-    color: #1F618D;
-    font-size: 23px;
-    margin-left: 3%;
-  }
-
-  .breadcrumb {
-    float: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 60px;
-    margin-right: 20px;
-  }
-}
-
-
-/* loading mask */
-
-.el-loading-mask {
-  z-index: 999 !important;
+// hyperlink
+.hyperlink {
+  @include hyperlink;
 }

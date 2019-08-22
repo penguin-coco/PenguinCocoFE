@@ -73,7 +73,7 @@
         </el-row>
       </el-main>
       
-      <el-footer style="height:50px;">
+      <el-footer>
         <nav-footer-student></nav-footer-student>
       </el-footer>
     </el-container>

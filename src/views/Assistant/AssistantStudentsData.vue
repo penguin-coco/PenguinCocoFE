@@ -30,8 +30,6 @@ import SideNavCourseIndexAssistant from '@/components/Assistant/SideNavCourseInd
 import NavFooter from '@/components/NavFooter'
 import StudentsDataSection from '@/components/MgmtContent/StudentsDataSection'
 
-import '@/assets/css/backstage/studentsData.scss'
-
 export default {
   components: {
     NavHeaderAssistant,

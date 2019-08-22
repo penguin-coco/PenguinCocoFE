@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="box-square">
+  <div class="penguin-box">
     <el-input class='filter-input' v-model='filterQuery' placeholder='請輸入題目ID或名稱' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
     <el-table :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" v-loading="tableLoading">
       <el-table-column type="expand">
@@ -60,7 +60,7 @@
       <el-table-column label="題目 ID" prop="problemId" width="100"></el-table-column>
       <el-table-column label="題目名稱" width="230">
         <template slot-scope="scope">
-          <a class="id-hyperlink" href="javascript:void(0)" @click="showProblemInfo(scope.row.problemId)">{{ scope.row.name }}</a>
+          <a class="hyperlink" href="javascript:void(0)" @click="showProblemInfo(scope.row.problemId)">{{ scope.row.name }}</a>
           <span v-if="scope.row.status=='可作答'" style="color: #67C23A; font-size: 25px;">&bull;</span>
           <span v-else style="color: #F56C6C; font-size: 25px;">&bull;</span>
         </template>

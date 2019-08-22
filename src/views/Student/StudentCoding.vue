@@ -6,34 +6,46 @@
     </el-header>
     <el-main>
       <problem-info-section :data="problem"></problem-info-section>
+
+      <div id="the-problem-info-chart" :class="{pieStyle: showPieFlag}">
+        <div class="before-open-pie" v-if="showPieFlag==false" @click="showPie">
+          <div class="icon"><i class="fas fa-chart-pie"></i></div>
+          <span class="text">題目詳情</span>
+        </div>
+
+        <div class="after-open-pie" v-if="showPieFlag">
+          <span class="title">此題作答情況</span>
+          <span class="close-btn" @click="closePie"><i class="fas fa-times"></i></span>
+          <div class="pie-chart-wrapper">
+            <ve-pie :data="chartData" :colors="chartColors" :settings="chartSettings"></ve-pie>
+          </div>
+        </div>
+      </div>
+
       <section id="judged-section" v-if="problem.judged==true" class="animated fadeInUp">
         <el-row>
-          <el-col :span="22" :offset="1" class="box">
-            <div class="chart hidden-xs-only" v-if="problem.judged">
-              <ve-pie :data="chartData" :colors="chartColors" :settings="chartSettings"></ve-pie>
-            </div>
+          <el-col :span="22" :offset="1" class="penguin-box box-shadow-heavy">
             <el-row>
               <el-col :span="22" :offset="1">
                 <div class="handDate">
-                  <div style="padding-bottom: 10px;">批改日期：</div>
-                  <div>{{ judgedResultForm.handDate }}</div>
+                  <i class="el-icon-edit"></i>批改日期：<span>{{ judgedResultForm.handDate }}</span>
                 </div>
                 <el-form :model="judgedResultForm" label-width="100px" label-position="top">
                   <el-row>
                     <el-col :xs="10" :sm="6">
                       <el-form-item label="分數">
-                        <el-input readonly v-model="judgedResultForm.score" style="width: 100%;"></el-input>
+                        <el-input class="width-fluid" readonly v-model="judgedResultForm.score"></el-input>
                       </el-form-item>
                     </el-col>
                     <el-col :xs="10" :sm="6" :offset="2">
                       <el-form-item label="運行時間">
-                        <el-input readonly v-model="judgedResultForm.runtime" style="width: 100%;"></el-input>
+                        <el-input class="width-fluid" readonly v-model="judgedResultForm.runtime"></el-input>
                       </el-form-item>
                     </el-col>
                   </el-row>
                   <el-form-item>
-                    <label prop="label" style="margin-right: 10px;">程式碼</label>
-                    <span><a class="commit-hyperlink" href="javascript:void(0);" @click="commitDialogVisible=true"><i class="el-icon-time"></i> {{commitTableData.length}} commits</a></span>
+                    <label class="mr-2" prop="label">程式碼</label>
+                    <span><a class="hyperlink" href="javascript:void(0);" @click="commitDialogVisible=true"><i class="el-icon-time"></i> {{commitTableData.length}} commits</a></span>
                     <el-input readonly :class="isBestCode" type="textarea" v-model="judgedResultForm.code" autosize resize="none"></el-input>
                   </el-form-item>
                   <el-form-item label="錯誤訊息" v-if="judgedResultForm.score!='100.0'">
@@ -57,7 +69,7 @@
       </section>
       <section id="codemirror-section" v-if="isCanDoRepeat">
         <el-row>
-          <el-col :span="22" :offset="1" class="box" v-loading="judging" element-loading-text="批改中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
+          <el-col :span="22" :offset="1" class="penguin-box box-shadow-heavy" v-loading="judging" element-loading-text="批改中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
             <div class="coding-block">
               <div class="setting">
                 <span>Language:</span>
@@ -85,8 +97,8 @@
       <!-- dicuss correct start -->
       <section id="discuss-correct-section" v-if="dicussShowFlag">
         <el-row>
-          <el-col :span="22" :offset="1" class="box">
-            <span class="title">討論題 - 程式互評</span>
+          <el-col class="penguin-box box-shadow-heavy" :span="22" :offset="1">
+            <span class="penguin-box-title d-block">討論題 - 程式互評</span>
             <span v-if="correctStudsDone==false">學生還沒做完程式，再稍等一下！</span>
             <el-tabs type="card" @tab-click="clickCorrectTab" v-if="correctStudsDone">
               <el-tab-pane v-for="(stud, index) in correctList" :key="stud.studentAccount" :label="stud.studentAccount" >
@@ -95,7 +107,7 @@
                 <!-- 送出評分 -->
                 <el-row v-if="!correctStatus">
                   <el-divider content-position="center" style="font-size: 16px; padding-top: 20px !important;">評分完所有學生後送出評分</el-divider>
-                  <el-button type="primary" style="float: right;" @click="submitCorrect">送出評分</el-button>
+                  <el-button class="float-right" type="primary" @click="submitCorrect">送出評分</el-button>
                 </el-row>
               </el-tab-pane>
             </el-tabs>
@@ -107,8 +119,8 @@
       <!-- dicuss corrected start 被批改的成績 -->
       <section id="discuss-corrected-section" v-if="problem.type=='討論題'&&problem.judged==true&&dicussCorrectedShowFlag">
         <el-row>
-          <el-col :span="22" :offset="1" class="box">
-            <span class="title">討論題 - 被批改的成績</span>
+          <el-col :span="22" :offset="1" class="penguin-box box-shadow-heavy">
+            <span class="penguin-box-title d-block">討論題 - 被批改的成績</span>
             <span v-if="correctedStudsDone==false">還未有批改的成績，再稍等一下</span>
             <el-row v-if="correctedStudsDone">
               <discuss-corrected-card :data="correctedList"></discuss-corrected-card>
@@ -119,7 +131,7 @@
       <!-- dicuss corrected end 被批改的成績 -->
     </el-main>
 
-    <el-footer style="height:50px;">
+    <el-footer>
       <nav-footer-student></nav-footer-student>
     </el-footer>
   </el-container>
@@ -142,7 +154,7 @@
     </el-row>
     <div class="codeDiff-block" v-if="commitDialogActive">
       <vue-code-diff :old-string="oldCode" :new-string="newCode" :context="10"></vue-code-diff>
-      <div><a class="back2commit-hyperlink" href="javascript:void(0);" @click="commitDialogActive=false"><i class="fas fa-long-arrow-alt-left"></i> 返回</a></div>
+      <div><a class="hyperlink float-right" href="javascript:void(0);" @click="commitDialogActive=false"><i class="fas fa-long-arrow-alt-left"></i> 返回</a></div>
     </div>
   </el-dialog>
   <!-- commitDialog end -->
@@ -172,7 +184,6 @@ import DiscussCorrectForm from '@/components/Student/DiscussCorrectForm'
 import DiscussCorrectedCard from '@/components/Student/DiscussCorrectedCard'
 
 import '@/assets/css/components/codemirror.scss'
-import '@/assets/css/pages/Student/student-coding.scss'
 
 import "codemirror/mode/clike/clike.js"
 import "codemirror/mode/python/python.js"
@@ -189,8 +200,6 @@ import "codemirror/addon/fold/foldgutter.css"
 import "codemirror/theme/darcula.css"
 import "codemirror/theme/blackboard.css"
 import "codemirror/theme/eclipse.css"
-// animated
-import "@/assets/css/vendors/animated/animate.css"
 
 export default {
   components: {
@@ -222,6 +231,7 @@ export default {
         'incorrectNum': null,
         'pattern': []
       },
+      showPieFlag: false, // pie chart
       mode: "text/x-java",
       nowLang: 'Java',
       languages: [{
@@ -284,8 +294,7 @@ public class Main {
     // pie
     this.chartColors = ['#67C23A', '#F56C6C'];
     this.chartSettings = {
-      radius: 70,
-      offsetY: 120
+      radius: 100
     }
   },
   computed: {
@@ -451,6 +460,14 @@ public class Main {
           }
         }
       });
+    },
+    // pie chart
+    showPie() {
+      this.showPieFlag = true;
+    },
+    closePie() {
+      this.showPieFlag = false;
+      console.log('z');
     },
     copy(s) {
       // 複製功能
@@ -776,125 +793,3 @@ public class Main {
   }
 }
 </script>
-
-<style>
-  .commit-hyperlink {
-    color: #303133;
-    text-decoration: none;
-    transition: all .3s ease;
-  }
-
-  .commit-hyperlink:hover {
-    color: #409EFF;
-  }
-
-  /* codeDiff-block */
-  #commitDialog .el-dialog {
-    width: 60vw;
-  }
-
-  .codeDiff-block {
-    padding-bottom: 35px;
-  }
-
-  .back2commit-hyperlink {
-    float: right;
-    color: #303133;
-    text-decoration: none;
-    transition: all .3s ease;
-  }
-
-  .back2commit-hyperlink:hover {
-    color: #409EFF;
-  }
-
-  /* code mirror */
-  #discuss-correct-section .CodeMirror-gutters {
-    height: 50vh !important;
-  }
-
-  #discuss-correct-section .CodeMirror-scroll {
-    min-height: 50vh !important;
-    height: auto;
-  }
-
-  #discuss-correct-section .CodeMirror {
-    min-height: 50vh !important;
-    height: auto;
-  }
-
-  #discuss-correct-section .CodeMirror-sizer {
-    margin-left: 41px !important;
-  }
-
-  #discuss-correct-section .CodeMirror-linenumbers {
-    width: 29px !important;
-  }
-
-  #discuss-correct-section .title {
-    display: block;
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  #discuss-correct-section .block {
-    padding: 20px 24px;
-    overflow: hidden;
-  }
-
-  #discuss-correct-section .small-title {
-    display: inline-block;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 7px;
-    color: #303133;
-  }
-
-  #discuss-correct-section .item-label {
-    color: rgb(132, 146, 166);
-  }
-
-
-  #discuss-correct-section .correct-slider {
-    padding-left: 10px;
-  }
-
-  /* discuss corrected 被批改的資料 */
-
-  #discuss-corrected-section .block {
-    padding-bottom: 10px;
-    margin-bottom: 5px;
-  }
-
-  #discuss-corredted-section .border-dashed {
-    border-bottom: 1px dashed #EBEEF5;
-  }
-
-  #discuss-corrected-section .title {
-    display: block;
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  #discuss-corrected-section .small-title {
-    display: inline-block;
-    font-size: 16px;
-    text-align: center;
-    margin-top: 6px;
-    color: #303133;
-  }
-
-  #discuss-corrected-section .score {
-    color: #303133;
-    text-align: center;
-    width:80%;
-    margin-top: 4px;
-    margin-bottom: 0px;
-    margin-left: 15px;
-    font-size: 18px;
-    border: 1px #DCDFE6 solid;
-    border-radius: 10px;
-  }
-</style>

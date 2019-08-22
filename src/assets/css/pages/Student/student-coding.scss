@@ -1,24 +1,97 @@
+/* the-problem-info-chart */
+#the-problem-info-chart {
+  display: block;
+  width: 70px;
+  height: 50px;
+  position: fixed;
+  right: 5px;
+  top: 18vh;
+  z-index: 2000;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: $box-shadow-light;
+  transition: $quick-transition;
+  
+  &.pieStyle {
+    cursor: default;
+    width: 500px;
+    height: 400px;
+  }
+  
+  .before-open-pie {
+    transition: $quick-transition;
+    color: $main-text-color;
+    
+    &:hover {
+      color: $primary-text-color;
+    }
+
+    .icon {
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+    }
+  
+    .text {
+      display: block;
+      font-size: 10px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  }
+
+  .after-open-pie {
+    transition: $quick-transition;
+
+    .title {
+      display: inline-block;
+      margin-top: 10px;
+      margin-left: 20px;
+      color: $main-text-color;
+
+    }
+    
+    .close-btn {
+      cursor: pointer;
+      float: right;
+      margin-right: 20px;
+      margin-top: 10px;
+      z-index: 99999999;
+      transition: $quick-transition;
+
+      &:hover {
+        color: $danger-text-color;
+      }
+    }
+
+    .pie-chart-wrapper {
+      z-index: 1500;
+      position: absolute;
+      top: 50px;
+      right: 0px;
+      width: 500px;
+      height: 300px;
+    }
+  }
+  
+}
+
+
 /* judged-section */
 #judged-section {
   .box{
     position: relative;
   }
 
-  .chart {
-    z-index: 1500;
-    position: absolute;
-    top: 15px;
-    right: 0px;
-    width: 500px;
-    height: 500px;
-  }
-
   .handDate {
     margin-bottom: 10px;
+    font-size: 15px;
+    color: $regular-text-color;
   }
 
   .judgedtime {
-    color: #909399;
+    color: $secondary-text-color;
     position: absolute;
     top: 15px;
     right: 40px;
@@ -27,7 +100,30 @@
   .el-form .el-form-item label {
     padding-bottom: 0px;
   }
+
+  /* best code */
+  .success-textarea .el-textarea__inner {
+    border-color: #67C23A;
+  }
+  
+  .bestcode::after {
+    content: '你是目前的最佳程式碼！！';
+    color: #67C23A;
+  }
 }
+
+
+/* codeDiff-block */
+#commitDialog {
+  .el-dialog {
+    width: 60vw;
+  }
+
+  .codeDiff-block {
+    padding-bottom: 35px;
+  }
+}
+
 
 /* codemirror-section */
 #codemirror-section {
@@ -51,4 +147,30 @@
     justify-content: center;
     height: 300px;
   }
-} 
+}
+
+
+/* discuss correct section 學生批改別人的資料 */
+#discuss-correct-section {
+  .CodeMirror-gutters {
+    height: 50vh !important;
+  }
+
+  .CodeMirror-scroll {
+    min-height: 50vh !important;
+    height: auto;
+  }
+
+  .CodeMirror {
+    min-height: 50vh !important;
+    height: auto;
+  }
+
+  .CodeMirror-sizer {
+    margin-left: 41px !important;
+  }
+
+  .CodeMirror-linenumbers {
+    width: 29px !important;
+  }
+}

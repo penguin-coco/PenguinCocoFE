@@ -11,7 +11,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb pageName="課程列表" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="box-square">
+          <el-row class="penguin-box">
             <course-list :data="courseList"></course-list>
           </el-row>
 

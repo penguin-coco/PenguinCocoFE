@@ -11,7 +11,7 @@
       <el-container>
         <el-main>
           <page-name-breadcrumb pageName="新增課程" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="box-square">
+          <el-row class="penguin-box">
             <!-- 步驟條 start -->
             <el-steps :active="step" align-center>
               <el-step title="步驟 1" description="新增課程內容"></el-step>

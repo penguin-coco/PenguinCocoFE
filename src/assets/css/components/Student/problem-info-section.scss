@@ -1,18 +1,15 @@
-@import '../utils/variables';
-
-#problem-section {
-  .problem-name {
-    display: block;
-    margin-bottom: 20px;
-    font-size: 30px;
-    font-weight: 700;
+#problem-info-section {
+  .problem-header {
     position: relative;
 
-    .id {
-      margin-left: 10px;
-      font-size: 16px;
-      color: $secondary-text-color;
-      font-weight: 500;
+    .rate {
+      display: inline-block;
+      font-size: 40px;
+      margin-left: 15px;
+  
+      & i {
+        font-size: 25px;
+      }
     }
 
     .type {
@@ -44,15 +41,6 @@
      }
   }
 
-  .el-rate {
-    display: inline-block;
-    font-size: 40px;
-
-    & i {
-      font-size: 25px;
-    }
-  }
-
   .problem-info {
     margin: 20px;
     margin-bottom: 25px;
@@ -64,7 +52,7 @@
 
     .content {
       font-size: 18px;
-      color: #666;
+      color: $regular-text-color;
       margin-left: 20px;
       margin-bottom: 15px;
       margin-top: 10px;

@@ -122,3 +122,27 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+#student-do-info-dialog {
+  .statistic-block {
+    height: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .statistic-block .title {
+    color: white;
+  }
+
+  .statistic-block .statistic {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 12px;
+    font-size: 30px;
+  }
+}
+
+</style>

@@ -1,12 +1,12 @@
 <template>
 <div>
-  <section class="box-square">
+  <section class="penguin-box">
     <el-input class='filter-input' v-model='filterQuery' placeholder='請輸入學號或姓名' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
     <el-table :data="tableFiltered.slice((currentPage-1)*pagesize, currentPage*pagesize)" border style="width: 100%" ref="studentsTable" v-loading="loading">
       <el-table-column fixed prop="studentId" label="學號" width="120"></el-table-column>
       <el-table-column fixed label="姓名" width="120">
         <template slot-scope="scope">
-          <a class="id-hyperlink" href="javascript:void(0)" @click="studentInfo(scope.row.studentId, scope.row.studentName)">{{ scope.row.studentName }}</a>
+          <a class="hyperlink" href="javascript:void(0)" @click="studentInfo(scope.row.studentId, scope.row.studentName)">{{ scope.row.studentName }}</a>
         </template>
       </el-table-column>
       <el-table-column fixed prop="studentClass" label="系級" width="120"></el-table-column>
@@ -21,7 +21,7 @@
     </div>
     <el-row>
       <el-col :span="4" :offset="20">
-        <el-button class="tocsv-btn" type="success" @click="exportCsv">匯出成績 <i class="fas fa-file-excel"></i></el-button>
+        <el-button class="mt-4 float-right" type="success" @click="exportCsv">匯出成績 <i class="fas fa-file-excel"></i></el-button>
       </el-col>
     </el-row>
   </section>

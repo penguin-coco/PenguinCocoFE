@@ -1,0 +1,18 @@
+#disscuss-correct-form {
+  .block {
+    padding: 20px 24px;
+    overflow: hidden;
+
+    .small-title {
+      display: inline-block;
+      font-size: 18px;
+      text-align: center;
+      margin-top: 7px;
+      color: $main-text-color;
+    }
+
+    .item-label {
+      color: rgb(132, 146, 166);
+    }
+  }
+}

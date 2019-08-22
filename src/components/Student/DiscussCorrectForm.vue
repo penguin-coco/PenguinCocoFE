@@ -1,101 +1,103 @@
 <template>
 <div>
   <!-- 1. 程式碼 -->
-  <codemirror :options="options" :value="data.code" :ref="'discussCodeMirror'+this.index" :style="{'font-size': fontSize+'px', 'padding-bottom': '20px'}" :tabIndex="tabIndex"></codemirror>
+  <codemirror class="pb-4" :options="options" :value="data.code" :ref="'discussCodeMirror'+this.index" :style="{'font-size': fontSize+'px'}" :tabIndex="tabIndex"></codemirror>
   <!-- 2. 給分 -->
-  <el-row class="block">
-    <el-col :span="24">
-      <span class="small-title">指標1. 程式正確性</span>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label" style="margin-top: 6px;">分數</el-col>
-      <el-col :span="22">
-        <el-slider v-model="data.correctValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+  <div id="disscuss-correct-form">
+    <el-row class="block">
+      <el-col :span="24">
+        <span class="small-title">指標1. 程式正確性</span>
       </el-col>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label">評論</el-col>
-      <el-col :span="22">
-        <el-input type="textarea" rows="2" resize="vertical" v-model="data.correctValue.comment" :disabled="disabled"></el-input>
+      <el-col class="mt-3" :span="23" :offset="1">
+        <el-col class="item-label mt-1" :span="2">分數</el-col>
+        <el-col :span="22">
+          <el-slider v-model="data.correctValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+        </el-col>
       </el-col>
-    </el-col>
-  </el-row>
-  <el-row class="block">
-    <el-col :span="24">
-      <span class="small-title">指標2. 程式可讀性</span>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label" style="margin-top: 6px;">分數</el-col>
-      <el-col :span="22">
-        <el-slider v-model="data.readValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+      <el-col class="mt-3" :span="23" :offset="1">
+        <el-col class="item-label" :span="2">評論</el-col>
+        <el-col :span="22">
+          <el-input type="textarea" rows="2" resize="vertical" v-model="data.correctValue.comment" :disabled="disabled"></el-input>
+        </el-col>
       </el-col>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label">評論</el-col>
-      <el-col :span="22">
-        <el-input type="textarea" rows="2" resize="vertical" v-model="data.readValue.comment" :disabled="disabled"></el-input>
+    </el-row>
+    <el-row class="block">
+      <el-col :span="24">
+        <span class="small-title">指標2. 程式可讀性</span>
       </el-col>
-    </el-col>
-  </el-row>
-  <el-row class="block">
-    <el-col :span="24">
-      <span class="small-title">指標3. 技巧運用</span>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label" style="margin-top: 6px;">分數</el-col>
-      <el-col :span="22">
-        <el-slider v-model="data.skillValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label mt-1" :span="2">分數</el-col>
+        <el-col :span="22">
+          <el-slider v-model="data.readValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+        </el-col>
       </el-col>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label">評論</el-col>
-      <el-col :span="22">
-        <el-input type="textarea" rows="2" resize="vertical" v-model="data.skillValue.comment" :disabled="disabled"></el-input>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label" :span="2" >評論</el-col>
+        <el-col :span="22">
+          <el-input type="textarea" rows="2" resize="vertical" v-model="data.readValue.comment" :disabled="disabled"></el-input>
+        </el-col>
       </el-col>
-    </el-col>
-  </el-row>
-  <el-row class="block">
-    <el-col :span="24">
-      <span class="small-title">指標4. 程式完整性</span>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label" style="margin-top: 6px;">分數</el-col>
-      <el-col :span="22">
-        <el-slider v-model="data.completeValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+    </el-row>
+    <el-row class="block">
+      <el-col :span="24">
+        <span class="small-title">指標3. 技巧運用</span>
       </el-col>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label">評論</el-col>
-      <el-col :span="22">
-        <el-input type="textarea" rows="2" resize="vertical" v-model="data.completeValue.comment" :disabled="disabled"></el-input>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label mt-1" :span="2">分數</el-col>
+        <el-col :span="22">
+          <el-slider v-model="data.skillValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+        </el-col>
       </el-col>
-    </el-col>
-  </el-row>
-  <el-row class="block">
-    <el-col :span="24">
-      <span class="small-title">指標5. 總和評分</span>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label" style="margin-top: 6px;">分數</el-col>
-      <el-col :span="22">
-        <el-slider v-model="data.wholeValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label" :span="2">評論</el-col>
+        <el-col :span="22">
+          <el-input type="textarea" rows="2" resize="vertical" v-model="data.skillValue.comment" :disabled="disabled"></el-input>
+        </el-col>
       </el-col>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-col :span="2" class="item-label">評論</el-col>
-      <el-col :span="22">
-        <el-input type="textarea" rows="2" resize="vertical" v-model="data.wholeValue.comment" :disabled="disabled"></el-input>
+    </el-row>
+    <el-row class="block">
+      <el-col :span="24">
+        <span class="small-title">指標4. 程式完整性</span>
       </el-col>
-    </el-col>
-  </el-row>
-  <el-row class="block">
-    <el-col :span="24">
-      <span class="small-title">總評論</span>
-    </el-col>
-    <el-col :span="23" :offset="1" style="margin-top: 15px;">
-      <el-input type="textarea" rows="2" resize="vertical" v-model="data.comment" :disabled="disabled"></el-input>
-    </el-col>
-  </el-row>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label mt-1" :span="2">分數</el-col>
+        <el-col :span="22">
+          <el-slider v-model="data.completeValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+        </el-col>
+      </el-col>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label" :span="2">評論</el-col>
+        <el-col :span="22">
+          <el-input type="textarea" rows="2" resize="vertical" v-model="data.completeValue.comment" :disabled="disabled"></el-input>
+        </el-col>
+      </el-col>
+    </el-row>
+    <el-row class="block">
+      <el-col :span="24">
+        <span class="small-title">指標5. 總和評分</span>
+      </el-col>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label mt-1" :span="2">分數</el-col>
+        <el-col :span="22">
+          <el-slider v-model="data.wholeValue.score" show-input :step="1" :max="5" show-stops :disabled="disabled"></el-slider>
+        </el-col>
+      </el-col>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-col class="item-label" :span="2">評論</el-col>
+        <el-col :span="22">
+          <el-input type="textarea" rows="2" resize="vertical" v-model="data.wholeValue.comment" :disabled="disabled"></el-input>
+        </el-col>
+      </el-col>
+    </el-row>
+    <el-row class="block">
+      <el-col :span="24">
+        <span class="small-title">總評論</span>
+      </el-col>
+      <el-col :span="23" :offset="1" class="mt-3">
+        <el-input type="textarea" rows="2" resize="vertical" v-model="data.comment" :disabled="disabled"></el-input>
+      </el-col>
+    </el-row>
+  </div>
 </div>
 </template>
 

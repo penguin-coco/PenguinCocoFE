@@ -13,14 +13,14 @@
     <el-container class="main-container" id="studentIndex-section">
       <el-row class="header">
         <el-col :span="24">
-          <div class="left-action-bar" style="display:inline-block;">
+          <div class="left-action-bar d-inline-block">
             <el-select v-model="modeValue" @change="changeMode">
               <el-option label="可作答" value="undo"></el-option>
               <el-option label="已完成" value="done"></el-option>
             </el-select>
-            <el-input v-model="nameFilterValue" class="filterInput" placeholder='請輸入題目名稱' clearable style=""><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
+            <el-input v-model="nameFilterValue" class="filterInput" placeholder='請輸入題目名稱' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
           </div>
-          <div class="right-action-bar" style="float: right;">
+          <div class="right-action-bar float-right">
             <el-button type="primary" plain icon="el-icon-s-operation" size="small" style="margin-top:8px;" @click="showFilterSection">filter</el-button>
           </div>
 
@@ -29,7 +29,7 @@
               <!-- TODO: tag filter func -->
               <el-col :span="8" class="item">
                 <span class="item-title">題目標籤</span>
-                <el-select v-model="problemTagValue" multiple filterable allow-create default-first-option style="width:80%;" disabled placeholder="功能尚未開放">
+                <el-select class="width-80" v-model="problemTagValue" multiple filterable allow-create default-first-option disabled placeholder="功能尚未開放">
                   <el-option-group
                     v-for="group in quesTagOptions"
                     :key="group.label"
@@ -45,13 +45,13 @@
               </el-col>
               <el-col :span="8" class="item">
                 <span class="item-title">選擇題型</span>
-                <el-select v-model="typeValue" style="width:80%;">
+                <el-select class="width-80" v-model="typeValue">
                   <el-option v-for="item in studIndexProblemType" :key="item.value" :label="item.label" :value="item.value"></el-option>
                 </el-select>
               </el-col>
               <el-col :span="8" class="item">
                 <span class="item-title">排序方式</span>
-                <el-select v-model="sortValue" clearable style="width:80%;">
+                <el-select class="width-80" v-model="sortValue" clearable>
                   <el-option label="難易度" value="rate"></el-option>
                   <el-option label="繳交期限" value="deadline"></el-option>
                 </el-select>
@@ -61,18 +61,16 @@
         </el-col>
       </el-row>
 
-      <el-main style="padding-top: 0px;">
-        <el-row class="problem-card-section" v-if="problemsFiltered.length>0" v-loading="problemSectionLoading">
+      <el-main class="pt-0">
+        <el-row class="problem-card-section" v-if="problemsFiltered.length>0" v-loading="problemSectionLoading" :gutter="25">
           <el-col :span="24" >
-            <el-col class="problem-card" v-for="problem in problemsFiltered" :key="problem.problemId" :xs="24" :sm="12" :md="8" :lg="6" style="padding-right: 23px;">
-              <a href="javascript:void(0);" @click="doProblem(problem.problemId)">
-                <el-card class="card" shadow="hover">
-                  
+            <transition-group name="slide-fade">
+              <el-col class="problem-card" v-for="problem in problemsFiltered" :key="problem.problemId" :xs="24" :sm="12" :md="8" :lg="6">
+                <a href="javascript:void(0);" @click="doProblem(problem.problemId)">
+                  <el-card class="card" shadow="hover">
                     <span class="problem-name ellipsis">{{ problem.name }}
                       {{problem.tag}}
-                      <!-- TODO: tag -->
-                      <!-- <el-tag v-for="(tag, index) in problem.tag" :key="index" effect="plain" style="height:16px; line-height:16px; padding:0 3px; font-size:10px; margin-left:5px;">{{tag}}</el-tag> -->
-                      <el-tag effect="plain" style="height:16px; line-height:16px; padding:0 3px; font-size:10px; margin-left:5px;">Java</el-tag>
+                      <el-tag class="tag" effect="plain">Java</el-tag>
                     </span>
                     <div class="bottom clearfix">
                       <el-rate class="rate" disabled :value="parseInt(problem.rate)"></el-rate>
@@ -80,10 +78,10 @@
                       <div v-if="dateDiff(todayDate, problem.deadline)>=1" class="time">{{ problem.deadline }}</div>
                     </div>
                     <div class="type">{{ problem.type }}</div>
-                  
-                </el-card>
-              </a>
-            </el-col>
+                  </el-card>
+                </a>
+              </el-col>
+            </transition-group>
           </el-col>
         </el-row>
 
@@ -92,7 +90,7 @@
         </el-row>
       </el-main>
 
-      <el-footer style="height: 50px;">
+      <el-footer>
         <nav-footer-student></nav-footer-student>
       </el-footer>
     </el-container>
@@ -348,7 +346,15 @@ export default {
       transition: all ease 0.3s;
     }
 
-    .rate .el-rate__item i{
+    .tag {
+      height: 16px;
+      line-height: 16px;
+      padding: 0 3px;
+      font-size: 10px;
+      margin-left: 5px;
+    }
+
+    .rate .el-rate__item i {
       font-size: 20px;
     }
 
@@ -367,13 +373,7 @@ export default {
       right: 15px;
       bottom: 19px;
       color: #888888;
-      font-size: 10px;
-    }
-
-    button {
-      position: absolute;
-      bottom: 5px;
-      right: 15px;
+      font-size: 12px;
     }
 
     .type {
@@ -381,7 +381,7 @@ export default {
       bottom: 19px;
       left: 20px;
       color: #888888;
-      font-size: 12px;
+      font-size: 13px;
     }
 
     .vuejs-countdown {
