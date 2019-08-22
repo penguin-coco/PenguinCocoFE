@@ -1,0 +1,165 @@
+/* 主要框住內容的container */
+.penguin-box {
+  padding: 30px;
+  margin-bottom: 15px;
+  border: solid 1px #DDDDDD;
+  border-radius: 5px;
+  background-color: #FFF;
+
+  .penguin-box-title {
+    @include penguin-box-title;
+  }
+
+  // 比較簡單的題目selector
+  .filter-input { 
+    width: 200px;
+    margin-bottom: 20px;
+  }
+
+  // 比較複雜的題目selector
+  .problem-tag-selector { 
+    width: 20vw;
+  }
+}
+
+/* 題目的格式 */
+.penguin-problem {
+  .problem-header {
+    .name {
+      @include penguin-box-title;
+    }
+    
+    .id {
+      margin-left: 5px;
+      font-size: 18px;
+    }
+
+    .rate {
+      display: inline-block;
+      font-size: 40px;
+      margin-left: 15px;
+  
+      & i {
+        font-size: 25px;
+      }
+    }
+
+    .type {
+      display: block;
+      color: $secondary-text-color;
+      font-size: 15px;
+      font-weight: 400;
+      position: absolute;
+      bottom: 20px;
+      right: 5px;
+    }
+
+    .deadline {
+      display: block;
+      color: $secondary-text-color;
+      font-size: 15px;
+      font-weight: 400;
+      position: absolute;
+      bottom: 0px;
+      right: 5px;
+    }
+
+    .tags {
+      margin-left: 10px;
+  
+      .el-tag {
+        line-height: 24px;
+       }
+    }
+  }
+
+  .problem-info {
+    margin: 20px;
+    margin-bottom: 25px;
+
+    .title {
+      font-size: 20px;
+      color: $primary-dark-text-color;
+    }
+
+    .content {
+      font-size: 18px;
+      color: $regular-text-color;
+      margin-left: 20px;
+      margin-bottom: 15px;
+      margin-top: 10px;
+    }
+  }
+}
+
+/* 展開的table */
+.penguin-table-expand {
+  font-size: 0;
+
+  label {
+    width: 90px;
+    color: #99a9bf;
+  }
+
+  .el-form-item {
+    margin-right: 0 !important;
+    margin-bottom: 0;
+    width: 50%;
+
+    .el-rate {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+/* new design */
+.items-nav {
+  color: #606266;
+  border-bottom: 1px solid #E4E7ED;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 30px;
+
+  .item {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 24px;
+    border-bottom: 2px solid #67C23A;
+  }
+
+  .item-span {
+    font-size:20px;
+    margin-left:15px;
+  }
+
+  .item-float-right {
+    float: right;
+  }
+}
+
+/* backstage header */
+.back-stage-header {
+  background-color: white;
+  border: solid 1px #DDDDDD;
+  border-bottom: 0px;
+  height: 60px;
+  line-height: 60px;
+
+  .title {
+    color: #1F618D;
+    font-size: 23px;
+    margin-left: 3%;
+  }
+
+  .breadcrumb {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 60px;
+    margin-right: 20px;
+  }
+}

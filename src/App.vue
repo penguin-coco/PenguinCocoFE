@@ -7,12 +7,7 @@
 
 <script>
 import axios from 'axios'
-
-
 import '@/assets/css/app.scss'
-
-// problem's style
-import '@/assets/css/components/problem-tag-selector.scss'
 
 
 export default {

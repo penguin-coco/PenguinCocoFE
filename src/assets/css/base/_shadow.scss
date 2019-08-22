@@ -1,0 +1,12 @@
+// box-shadow
+.box-shadow-light {
+  box-shadow: $box-shadow-light;
+} 
+.box-shadow-heavy {
+  box-shadow: $box-shadow-heavy;
+}
+
+// text-shadow
+.text-shadow {
+  text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}

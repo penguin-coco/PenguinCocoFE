@@ -13,7 +13,7 @@
           <page-name-breadcrumb pageName="題目列表" :isBreadcrumb="false"></page-name-breadcrumb>
           <div class="penguin-box">
             <!-- search select -->
-            <el-select id="problemTagSelector" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
+            <el-select class="problem-tag-selector" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
               <el-option-group
                 v-for="group in quesTagOptions"
                 :key="group.label"
@@ -49,7 +49,7 @@
               </el-table-column>
             </el-table>
           </div>
-          <div style="text-align: center;margin-top: 30px;">
+          <div class="text-center mt-6">
             <el-pagination background layout="prev, pager, next" :total="total" @current-change="currentChange"></el-pagination>
           </div>
         </el-main>
@@ -58,12 +58,12 @@
   </el-container>
   
   <!-- view problem dialog start -->
-  <el-dialog id="viewProblemDialog" :visible.sync="problemDialogVisible" v-loading="problemDialogLoading">
-    <section id="problem-section">
-      <el-row>
+  <el-dialog :visible.sync="problemDialogVisible" v-loading="problemDialogLoading">
+    <section >
+      <el-row class="penguin-problem">
         <el-col :span="20" :offset="2">
-          <div class="problem-name">
-            <span v-text="quesData.name"></span>
+          <div class="problem-header">
+            <span class="name" v-text="quesData.name"></span>
             <span class="id" v-text="quesData.id"></span>
             <span class="tags" v-for="tag in quesData.tag">
               <el-tag size="small">{{ tag }}</el-tag>

@@ -1,36 +1,10 @@
-@import '../utils/variables';
-
-* {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+// spacing 區塊
+.space {
+  padding: 50px;
 }
 
-html, body {
-  color: #303133;
-  margin: 0;
-  padding: 0;
-  background-color: #F2F3F4;
-}
-
-html, body, h1, h2, h3, h4, h5, h6, button, input {
-  font-family: 'Noto Sans TC', sans-serif, "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "微軟雅黑", Arial, sans-serif;
-}
-
-hr {
-  border: 0;
-  height: 1px;
-  background-color: #d4d4d4;
-  color: #d4d4d4;
-  /* IE6 */
-}
-
-// display
-.d-block {
-  display: block;
-}
-.d-inline-block {
-  display: inline-block;
+.small-space {
+  padding: 20px;
 }
 
 // padding & margin spacing
@@ -92,36 +66,3 @@ hr {
   }
 }
 
-// width style
-@each $name, $var in $width-scales {
-  .width-#{$name} {
-    width: $var;
-  }
-}
-
-// float
-@each $var in $float-scales {
-  .float-#{$var} {
-    float: $var;
-  }
-}
-
-// text
-@each $var in $text-scales {
-  .text-#{$var} {
-    text-align: $var;
-  }
-}
-
-// box-shadow
-.box-shadow-light {
-  box-shadow: $box-shadow-light;
-} 
-.box-shadow-heavy {
-  box-shadow: $box-shadow-heavy;
-}
-
-// hyperlink
-.hyperlink {
-  @include hyperlink;
-}

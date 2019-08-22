@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html, body {
+  color: #303133;
+  margin: 0;
+  padding: 0;
+  background-color: #F2F3F4;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, button, input {
+  font-family: 'Noto Sans TC', sans-serif, "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", "微軟雅黑", Arial, sans-serif;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #d4d4d4;
+  color: #d4d4d4;
+  /* IE6 */
+}
+

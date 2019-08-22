@@ -50,8 +50,6 @@ import ViewProblemDialog from '@/components/MgmtProblem/ViewProblemDialog'
 import EditProblemDialog from '@/components/MgmtProblem/EditProblemDialog'
 import DoStatusProblemDialog from '@/components/MgmtProblem/DoStatusProblemDialog'
 
-import '@/assets/css/table.scss'
-
 export default {
   components: {
     NavHeaderTeacher,

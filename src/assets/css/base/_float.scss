@@ -1,0 +1,6 @@
+// float
+@each $var in $float-scales {
+  .float-#{$var} {
+    float: $var;
+  }
+}

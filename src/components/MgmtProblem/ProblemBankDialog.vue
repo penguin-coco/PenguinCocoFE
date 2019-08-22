@@ -3,7 +3,7 @@
   <el-dialog id="problemBankDialog" title="題庫列表" :visible.sync="myVisible" width="70vw" @close="closeDialog">
     <!-- search select -->
     <div v-if="viewProblemActive==false">
-      <el-select id="problemTagSelector" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
+      <el-select v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
         <el-option-group
           v-for="group in quesTagOptions"
           :key="group.label"
@@ -39,11 +39,11 @@
       </div>
     </div>
 
-    <section id="problem-section" v-else style="padding-bottom: 50px;">
-      <el-row>
+    <section class="pb-10" v-else>
+      <el-row class="penguin-problem">
         <el-col :span="20" :offset="2">
-          <div class="problem-name">
-            <span v-text="quesData.name"></span>
+          <div class="problem-header">
+            <span class="name" v-text="quesData.name"></span>
             <span class="id" v-text="quesData.id"></span>
             <span class="tags" v-for="tag in quesData.tag">
               <el-tag size="small">{{ tag }}</el-tag>

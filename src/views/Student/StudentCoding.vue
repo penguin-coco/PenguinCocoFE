@@ -34,12 +34,12 @@
                   <el-row>
                     <el-col :xs="10" :sm="6">
                       <el-form-item label="分數">
-                        <el-input class="width-fluid" readonly v-model="judgedResultForm.score"></el-input>
+                        <el-input class="width-100" readonly v-model="judgedResultForm.score"></el-input>
                       </el-form-item>
                     </el-col>
                     <el-col :xs="10" :sm="6" :offset="2">
                       <el-form-item label="運行時間">
-                        <el-input class="width-fluid" readonly v-model="judgedResultForm.runtime"></el-input>
+                        <el-input class="width-100" readonly v-model="judgedResultForm.runtime"></el-input>
                       </el-form-item>
                     </el-col>
                   </el-row>
@@ -149,7 +149,7 @@
             </template>
           </el-table-column>
         </el-table>
-        <div class="sm-space"></div>
+        <div class="small-space"></div>
       </el-col>
     </el-row>
     <div class="codeDiff-block" v-if="commitDialogActive">
@@ -182,8 +182,6 @@ import NavFooterStudent from '@/components/Student/NavFooterStudent'
 import ProblemInfoSection from '@/components/Student/ProblemInfoSection'
 import DiscussCorrectForm from '@/components/Student/DiscussCorrectForm'
 import DiscussCorrectedCard from '@/components/Student/DiscussCorrectedCard'
-
-import '@/assets/css/components/codemirror.scss'
 
 import "codemirror/mode/clike/clike.js"
 import "codemirror/mode/python/python.js"

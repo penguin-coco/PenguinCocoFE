@@ -1,0 +1,25 @@
+// text
+@each $var in $text-scales {
+  .text-#{$var} {
+    text-align: $var;
+  }
+}
+
+// hyperlink
+.hyperlink {
+  @include hyperlink;
+}
+
+// 強制換行
+.change-line { 
+  white-space: pre-wrap;
+  /* word-wrap: break-word; */
+}
+
+// 超過width隱藏內容
+.ellipsis { 
+  width: 90%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

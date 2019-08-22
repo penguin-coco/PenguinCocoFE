@@ -35,16 +35,16 @@
           </el-col>
         </el-row>
 
-      <el-row style="margin-top:30px;" class="historyScore-section">
+      <el-row class="historyScore-section mt-5">
         <el-col :span="24">
-          <el-card shadow="hover" style="padding: 20px;">
+          <el-card class="p-4" shadow="hover">
             <div class="items-nav">
               <span class="item-span">歷史成績</span>
             </div>
             <el-table :data="tableData" style="width: 100%">
               <el-table-column type="expand">
                 <template slot-scope="props">
-                  <el-form label-position="left" inline class="table-expand">
+                  <el-form class="penguin-table-expand" label-position="left" inline>
                       <el-form-item label="題目名稱">
                         <span>{{ props.row.problemName }}</span>
                       </el-form-item>

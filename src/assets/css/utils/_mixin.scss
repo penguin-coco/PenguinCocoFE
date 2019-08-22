@@ -1,5 +1,3 @@
-@import './variables';
-
 @mixin box-sizing {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -14,4 +12,11 @@
   &:hover {
     color: $primary-text-color;
   }
+}
+
+// 與 penguin-problem-name 共用
+@mixin penguin-box-title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: 700;
 }

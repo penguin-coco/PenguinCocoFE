@@ -5,7 +5,7 @@
     <el-table :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" v-loading="tableLoading">
       <el-table-column type="expand">
         <template slot-scope="props">
-        <el-form label-position="left" inline class="table-expand">
+        <el-form class="penguin-table-expand" label-position="left" inline>
             <el-form-item label="題目名稱">
                 <span>{{ props.row.name }}</span>
             </el-form-item>

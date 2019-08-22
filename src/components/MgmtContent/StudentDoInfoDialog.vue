@@ -16,7 +16,7 @@
             <div class="title">正確率</div>
           </el-col>
         </el-row>
-        <el-table class="mt-4 mb-0 width-fluid" max-height="250" :data="dialogStudentData" @filter-change="handleFilterChange" ref="table" style="width: 100%;">
+        <el-table class="mt-4 mb-0 width-100" max-height="250" :data="dialogStudentData" @filter-change="handleFilterChange" ref="table" style="width: 100%;">
           <el-table-column prop="name" label="題目名稱">
           </el-table-column>
           <el-table-column prop="type" label="題目類型" :filters="[{text: '作業', value: '作業'}, {text: '練習題', value: '練習題'}, {text: '討論題', value: '討論題'}]" :filter-method="typeFilterHandler">

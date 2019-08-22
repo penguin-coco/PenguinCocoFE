@@ -9,8 +9,13 @@
 @import 'utils/function';
 
 // Base
-@import 'base/transition.scss';
 @import 'base/basic.scss';
+@import 'base/content';
+@import 'base/display';
+@import 'base/float';
+@import 'base/shadow';
+@import 'base/spacing';
+@import 'base/text';
 
 // Theme
 @import 'theme/penguin.scss';
@@ -20,7 +25,6 @@
 @import 'pages/Student/student-coding.scss';
 
 // Components
-@import 'components/Student/problem-info-section.scss';
 @import 'components/Student/discuss-correct-form.scss';
 @import 'components/Student/discuss-corrected-card.scss';
 
@@ -33,6 +37,8 @@
 
 // Vendors-extensions
 @import 'vendors-extensions/element-ui';
+@import 'vendors-extensions/element-transition.scss';
+@import 'vendors-extensions/codemirror';
 
 // Layout
 @import 'layout/navheader.scss';
