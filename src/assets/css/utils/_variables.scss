@@ -11,6 +11,15 @@ $warning-text-color: #E6A23C;
 $danger-text-color: #F56C6C;
 $info-text-color: #909399;
 
+// border color
+$base-border-color: #DCDFE6;
+$light-border-color: #E4E7ED;
+$lighter-border-color: #EBEEF5;
+
+// border
+$light-border: 1px solid $light-border-color;
+$transparent-border: rgba(0,0,0,0);
+
 // backgroud color
 $gray-light-bgcolor: #EFF0F3;
 
@@ -19,9 +28,6 @@ $sidenav-stud-bgcolor: white;
 $sidenav-tr-bgcolor: #545c64;
 $sidenav-asst-bgcolor: #545c64;
 $sidenav-quesbk-bgcolor: #303133;
-
-// border
-$transparent-border: rgba(0,0,0,0);
 
 // box shadow
 $box-shadow-light: 0 1px 5px 0 rgba(0, 0, 0, 0.1);
@@ -35,7 +41,7 @@ $quick-transition: all .3s ease;
 $slow-transition: all .8s ease;
 
 // scales: for building padding & margin
-$pm-scales: (0:0px, 1:5px, 2:10px, 3:15px, 4:20px, 5:25px, 6:30px, 7:35px, 8:40px, 9:45px, 10:50px);
+$pm-scales: (0:0px, 1:5px, 2:10px, 3:15px, 4:20px, 5:25px, 6:30px, 7:35px, 8:40px, 9:45px, 10:50px, 11:55px, 12:60px);
 
 // width
 $width-scales: (100:100%, 90:90%, 80:80%, 70:70%, 60:60%, 50:50%);

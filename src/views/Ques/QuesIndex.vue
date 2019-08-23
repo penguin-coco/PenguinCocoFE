@@ -11,7 +11,7 @@
       <el-container>
         <el-main class="main-container">
           <page-name-breadcrumb pageName="題目列表" :isBreadcrumb="false"></page-name-breadcrumb>
-          <div class="penguin-box">
+          <div class="penguin-box border-radius-none">
             <!-- search select -->
             <el-select class="problem-tag-selector" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
               <el-option-group

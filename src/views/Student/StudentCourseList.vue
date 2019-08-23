@@ -4,8 +4,8 @@
   <div class="space"></div>
   <el-row>
     <el-col :span="20" :offset="2" class="penguin-box box-shadow-heavy">
-      <div class="items-nav">
-        <div class="item">我的課程</div>
+      <div class="penguin-content-header">
+        <div class="content-title">我的課程</div>
       </div>
       <course-list :data="courseList"></course-list>
     </el-col>

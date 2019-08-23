@@ -1,0 +1,33 @@
+/* border */
+$dir: top, bottom, left, right;
+@each $var in $dir {
+  .border-#{$var} {
+    border-#{$var}: $light-border !important;
+  }
+
+  .border-#{$var}-none {
+    border-#{$var}: none !important;
+  }
+
+  .border-#{$var}-transparent {
+    border-#{$var}: $transparent-border !important;
+  }
+}
+
+
+.border-none {
+  border: none !important;
+}
+
+.border-transparent {
+  border: $transparent-border !important;
+}
+
+/* border radius */
+.border-radius-none {
+  border-radius: 0px !important;
+}
+
+.border-radius-light {
+  border-radius: 5px !important;
+}

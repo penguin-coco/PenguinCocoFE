@@ -15,8 +15,8 @@
         <el-row :gutter="20" class="scoreData-section">
           <el-col :xs="24" :sm="12">
             <el-card shadow="hover">
-              <div class="items-nav">
-                <span class="item-span">正確率</span>
+              <div class="penguin-content-header border-bottom-none">
+                <span class="gentle-content-title">正確率</span>
               </div>
               <ve-pie :data="pieData" :colors="pieColors" :settings="pieSettings">
                 <div class="data-empty" v-if="hasRecordFlag">沒有數據 &#x1F61D;</div>
@@ -25,8 +25,8 @@
           </el-col>
           <el-col :xs="24" :sm="12">
             <el-card shadow="hover">
-              <div class="items-nav">
-                <span class="item-span">成績圖表</span>
+              <div class="penguin-content-header border-bottom-none">
+                <span class="gentle-content-title">成績圖表</span>
               </div>
               <ve-line :data="lineData" :settings="lineSettings">
                 <div class="data-empty" v-if="hasRecordFlag">沒有數據 &#x1F61D;</div>
@@ -38,8 +38,8 @@
       <el-row class="historyScore-section mt-5">
         <el-col :span="24">
           <el-card class="p-4" shadow="hover">
-            <div class="items-nav">
-              <span class="item-span">歷史成績</span>
+            <div class="penguin-content-header border-bottom-none">
+              <span class="gentle-content-title">歷史成績</span>
             </div>
             <el-table :data="tableData" style="width: 100%">
               <el-table-column type="expand">
@@ -225,11 +225,6 @@ export default {
 </script>
 
 <style>
-#studentIndex-scorePanel .items-nav {
-  width: 95%;
-  border-bottom: none;
-}
-
 #studentIndex-scorePanel .scoreData-section .data-empty {
   position: absolute;
   left: 0;

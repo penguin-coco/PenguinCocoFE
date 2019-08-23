@@ -22,6 +22,31 @@
   }
 }
 
+
+/* 內容 or 卡片 title樣式 */
+.penguin-content-header {
+  color: $regular-text-color;
+  border-bottom: 1px solid #E4E7ED;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 30px;
+
+  // 文字綠色底
+  .content-title {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 24px;
+    border-bottom: 2px solid $sucess-text-color;
+  }
+
+  // 較小巧精緻
+  .gentle-content-title {
+    font-size:20px;
+    margin-left:15px;
+  }
+}
+
+
 /* 題目的格式 */
 .penguin-problem {
   .problem-header {
@@ -92,6 +117,7 @@
   }
 }
 
+
 /* 展開的table */
 .penguin-table-expand {
   font-size: 0;
@@ -115,46 +141,22 @@
   }
 }
 
-/* new design */
-.items-nav {
-  color: #606266;
-  border-bottom: 1px solid #E4E7ED;
-  height: 50px;
-  line-height: 50px;
-  margin-bottom: 30px;
 
-  .item {
-    display: inline-block;
-    margin-right: 20px;
-    font-size: 24px;
-    border-bottom: 2px solid #67C23A;
-  }
-
-  .item-span {
-    font-size:20px;
-    margin-left:15px;
-  }
-
-  .item-float-right {
-    float: right;
-  }
-}
-
-/* backstage header */
-.back-stage-header {
+/* teacher & assistant 管理後台的header */
+.penguin-backstage-header {
   background-color: white;
   border: solid 1px #DDDDDD;
   border-bottom: 0px;
   height: 60px;
   line-height: 60px;
 
-  .title {
+  .backstage-title {
     color: #1F618D;
     font-size: 23px;
-    margin-left: 3%;
+    margin-left: 40px;
   }
 
-  .breadcrumb {
+  .backstage-breadcrumb {
     float: right;
     display: flex;
     flex-direction: column;

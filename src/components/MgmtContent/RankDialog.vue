@@ -10,10 +10,10 @@
           </el-radio-group>
         </div>
         <div class="correctRank-block" v-if="correctRankFlag">
-          <div class="items-nav">
-            <div class="item">正確題數排行</div>
+          <div class="penguin-content-header">
+            <div class="content-title">正確題數排行</div>
           </div>
-          <el-table max-height="350" :data="correctRankData" style="width: 100%; margin-bottom: 60px;">
+          <el-table class="width-100 mb-12" max-height="350" :data="correctRankData">
             <el-table-column prop="rank" label="名次" width="80%">
             </el-table-column>
             <el-table-column prop="account" label="學生學號">
@@ -23,10 +23,10 @@
           </el-table>
         </div>
         <div class="bestCodeRank-block" v-if="bestCodeRankFlag">
-          <div class="items-nav">
-            <div class="item">最佳解答數排行</div>
+          <div class="penguin-content-header">
+            <div class="content-title">最佳解答數排行</div>
           </div>
-          <el-table max-height="350" :data="bestCodeRankData" style="width: 100%; margin-bottom: 60px;">
+          <el-table class="width-100 mb-12" max-height="350" :data="bestCodeRankData">
             <el-table-column prop="rank" label="名次" width="80%">
             </el-table-column>
             <el-table-column prop="account" label="學生學號">

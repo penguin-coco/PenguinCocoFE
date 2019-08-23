@@ -13,9 +13,9 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb :pageName="this.$store.state.course.courseInfo.courseName" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="penguin-box">
+          <el-row class="penguin-box border-radius-none">
             <el-row :gutter="25">
-              <el-col :span="8" v-for="item in oprateList" :key="item" style="margin-bottom: 15px;">
+              <el-col class="mb-3" :span="8" v-for="item in oprateList" :key="item">
                 <a href="javascript:void(0);" @click="toProblemsData(item)" style="text-decoration: none;">
                   <el-card shadow="hover">{{ item }}</el-card>
                 </a>

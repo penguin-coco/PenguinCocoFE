@@ -4,8 +4,8 @@
   <el-dialog :visible.sync="myVisible" @close="doInfoDialogActiveStudentCode=false;">
     <el-row v-if="doInfoDialogActiveStudentCode==false">
       <el-col :span="20" :offset="2">
-        <div class="items-nav">
-          <div class="item">{{ problemName }}</div>
+        <div class="penguin-content-header">
+          <div class="content-title">{{ problemName }}</div>
         </div>
         <el-table max-height="336" :data="data" style="width: 100%; margin-bottom: 60px;">
           <el-table-column prop="studentId" label="學生學號">

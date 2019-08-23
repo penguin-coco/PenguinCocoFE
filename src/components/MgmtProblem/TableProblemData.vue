@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="penguin-box">
+  <div class="penguin-box border-radius-none">
     <el-input class='filter-input' v-model='filterQuery' placeholder='請輸入題目ID或名稱' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
     <el-table :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" v-loading="tableLoading">
       <el-table-column type="expand">

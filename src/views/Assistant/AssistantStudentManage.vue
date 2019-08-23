@@ -11,7 +11,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb pageName="學生管理"></page-name-breadcrumb>
-          <div class="penguin-box">
+          <div class="penguin-box border-radius-none">
             <el-row :gutter="20">
               <el-col :span="12" style="border-right: 1px #E4E7ED dashed;">
                 <el-table class="studentDataTable" ref="multipleTable" :data="studentData" tooltip-effect="dark" height="70vh" @selection-change="handleSelectionChange" v-loading="dataLoading">

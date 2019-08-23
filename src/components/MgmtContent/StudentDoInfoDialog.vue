@@ -1,10 +1,10 @@
 <template>
 <div>
-  <el-dialog :visible.sync="myVisible" @close="clearFilter" id="student-do-info-dialog">
+  <el-dialog id="student-do-info-dialog" :visible.sync="myVisible" @close="clearFilter">
     <el-row>
       <el-col :span="20" :offset="2">
-        <div class="items-nav">
-          <div class="item">{{ name }}</div>{{ id }}
+        <div class="penguin-content-header">
+          <div class="content-title">{{ name }}</div>{{ id }}
         </div>
         <el-row>
           <el-col :span="11" class="statistic-block" style="background-color: #3498DB;">

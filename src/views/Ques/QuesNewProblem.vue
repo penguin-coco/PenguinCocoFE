@@ -11,7 +11,7 @@
       <el-container class="main-container">
         <el-main>
           <page-name-breadcrumb pageName="新增題目" :isBreadcrumb="false"></page-name-breadcrumb>
-          <el-row class="penguin-box">
+          <el-row class="penguin-box border-radius-none">
             <el-col :span="20" :offset="2">
               <el-form :model="problemData" label-width="100px" label-position="top">
                 <el-row>

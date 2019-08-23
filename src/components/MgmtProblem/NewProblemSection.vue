@@ -1,6 +1,6 @@
 <template>
 <div>
-  <el-row class="penguin-box" id="newproblem-section">
+  <el-row class="penguin-box border-radius-none" id="newproblem-section">
     <el-col :span="20" :offset="2" style="margin-bottom: 10px;">
       <el-button type="warning" icon="fas fa-book" round @click="viewProblemBank"> 從題庫匯入</el-button>
     </el-col>
