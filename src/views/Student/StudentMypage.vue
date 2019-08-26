@@ -20,7 +20,7 @@
                 <div class="float-right mr-3">
                   <el-dropdown trigger="click" @command="dropdownCmd">
                     <span class="el-dropdown-link">
-                      <i class="el-icon-more" style="font-size: 20px;"></i>
+                      <i class="el-icon-more fs-20"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
                       <el-dropdown-item icon="el-icon-paperclip" command="0">更改密碼</el-dropdown-item>
@@ -32,9 +32,9 @@
                 <i class="fas fa-user-circle" style="font-size: 80px;"></i>
                 <p class="name">{{ user.name }}</p>
                 <el-row>
-                  <el-col :span="12" style="text-align:right;">
+                  <el-col class="text-right" :span="12">
                     <span class="account">{{ user.studentId }}</span>&nbsp;&nbsp;&nbsp;
-                    <span style="font-size:15px; color:#DCDFE6;">|</span>
+                    <span class="fs-15" style="font-size:15px; color:#DCDFE6;">|</span>
                   </el-col> 
                   <el-col :span="12" style="text-align:left;">&nbsp;&nbsp;&nbsp;
                     <span class="class">{{ user.class }}</span>
@@ -49,20 +49,20 @@
               <div class="penguin-content-header border-bottom-none mb-1">
                 <span class="gentle-content-title">作答資訊</span>
               </div>
-              <div class="center">
+              <div class="flex-row-center">
                 <el-progress type="circle" :percentage="donePercent"></el-progress>
               </div>
               <el-row class="mt-3" justify="center">
                 <el-col :span="24">
-                  <el-col :span="8" style="text-align:center;">
+                  <el-col class="text-center" :span="8">
                     <span class="done">已完成</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{ user.doneNum }}</span>
                   </el-col> 
-                  <el-col :span="8" style="text-align:center;">
+                  <el-col class="text-center" :span="8">
                     <span class="undo">未完成</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{ user.undoNum }}</span>
                   </el-col>
-                  <el-col :span="8" style="text-align:center;">
+                  <el-col class="text-center" :span="8">
                     <span class="best">最佳解答</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{user.bestNum}}</span>
                   </el-col> 

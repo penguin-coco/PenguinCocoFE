@@ -1,5 +1,3 @@
-@import '../utils/variables';
-
 @mixin navheader-basic($auth, $isShadow, $isLogoBorder:true) {
   position: fixed;
   overflow: hidden;

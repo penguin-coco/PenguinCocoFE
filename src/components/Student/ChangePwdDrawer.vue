@@ -8,20 +8,26 @@
     ref="drawer"
     >
     <div class="drawer__content">
-      <el-form :model="form" label-position="top">
+      <el-form :model="form" label-position="top" style="height: 95%;">
         <el-form-item label="帳號">
-          <el-input v-model="form.account" style="width: 80%;"></el-input>
+          <el-input class="width-80" v-model="form.account"></el-input>
         </el-form-item>
         <el-form-item label="原密碼">
-          <el-input v-model="form.oriPassword" style="width: 80%;"></el-input>
+          <el-input class="width-80" v-model="form.oriPassword"></el-input>
         </el-form-item>
         <el-form-item label="新密碼">
-          <el-input v-model="form.newPassword" style="width: 80%;"></el-input>
+          <el-input class="width-80" v-model="form.newPassword"></el-input>
         </el-form-item>
       </el-form>
       <div class="drawer__footer">
-        <el-button @click="closeDrawer">取 消</el-button>
-        <el-button type="primary" @click="changePassword">確 定</el-button>
+        <el-row class="width-100" :gutter="20">
+          <el-col :span="12">
+            <el-button class="width-100 text-center" @click="closeDrawer">取 消</el-button>
+          </el-col>
+          <el-col :span="12">
+            <el-button class="width-100 text-center" type="primary" @click="changePassword">確 定</el-button>
+          </el-col>
+        </el-row>
       </div>
     </div>
   </el-drawer>
@@ -93,17 +99,17 @@ export default {
 <style>
 #changePwd-drawer .drawer__content {
   padding: 30px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
   height: 100%;
 }
 
 #changePwd-drawer .drawer__footer {
-  display: flex;
+  /* display: flex; */
 }
 
 #changePwd-drawer .drawer__footer button {
-  display: flex;
+  /* display: flex; */
 }
 
 #changePwd-drawer .el-form .el-form-item .el-form-item__label {

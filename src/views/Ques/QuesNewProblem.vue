@@ -17,7 +17,7 @@
                 <el-row>
                   <el-col :span="12">
                     <el-form-item label="題目名稱">
-                      <el-input v-model="problemData.name" maxlength="15" placeholder="最長15個字" style="width: 70%;"></el-input>
+                      <el-input class="width-70" v-model="problemData.name" maxlength="15" placeholder="最長15個字"></el-input>
                     </el-form-item>
                   </el-col>
                   <el-col :span="12">
@@ -26,13 +26,13 @@
                       <el-tag :key="tag" v-for="tag in problemData.tag" closable :disable-transitions="false" @close="handleClose(tag)">
                         {{tag}}
                       </el-tag>
-                      <el-autocomplete class="input-new-tag" v-if="inputVisible" ref="saveTagInput" size="small" 
+                      <el-autocomplete class="penguin-auto-input" v-if="inputVisible" ref="saveTagInput" size="small" 
                       @keyup.enter.native="handleInputConfirm" v-model="inputValue" popper-class="my-autocomplete" :fetch-suggestions="querySearch" @select="handleSelect">
                         <template slot-scope="{ item }">
                           <div class="name">{{ item.value }}</div>
                         </template>
                       </el-autocomplete>
-                      <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+                      <el-button v-else class="penguin-new-tag-btn" size="small" @click="showInput">+ New Tag</el-button>
                     </el-form-item>
                     <!-- TAGs -->
                   </el-col>
@@ -55,9 +55,9 @@
                     <img src="/static/md-icon.png" alt="md-icon" style="width: 25px; margin-left: 10px;">
                     <img src="/static/katex-icon.png" alt="md-icon" style="width: 40px; margin-left: 3px;">
                   </label>
-                  <div id="markdown-editor">
-                    <el-input type="textarea" rows="5" resize="vertical" placeholder="請輸入題目的描述內容" v-model="problemData.description" style="width: 100%;" @input="update"></el-input>
-                    <vue-markdown class="md-preview" :source="problemData.description"></vue-markdown>
+                  <div>
+                    <el-input class="width-100" type="textarea" rows="5" resize="vertical" placeholder="請輸入題目的描述內容" v-model="problemData.description" @input="update"></el-input>
+                    <vue-markdown class="penguin-md-preview" :source="problemData.description"></vue-markdown>
                   </div>
                 </el-form-item>
                 <el-row>
@@ -371,36 +371,5 @@ export default {
 <style>
 #confirmProblemDialog .el-loading-mask {
   height: 160% !important;
-}
-
-/* tag style */
-.el-tag + .el-tag {
-  margin-left: 10px;
-}
-
-.button-new-tag {
-  margin-left: 10px;
-  height: 32px;
-  line-height: 30px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.input-new-tag {
-  width: 90px;
-  margin-left: 10px;
-  vertical-align: bottom;
-}
-
-#markdown-editor code {
-  color: #f66;
-}
-
-/* md預覽 */
-
-.md-preview {
-  font-size: 18px;
-  line-height: 25px;
-  color: #666;
 }
 </style>

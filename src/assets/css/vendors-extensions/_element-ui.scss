@@ -19,3 +19,8 @@ footer.el-footer {
 .el-loading-mask {
   z-index: 999 !important;
 }
+
+/* tag */
+.el-tag + .el-tag {
+  margin-left: 10px;
+}

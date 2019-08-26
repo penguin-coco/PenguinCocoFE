@@ -12,6 +12,7 @@ const user = {
     },
     cleanUserInfo(state) {
       state.userInfo =  {
+        login: false,
         account: '',
         authority: ''
       }

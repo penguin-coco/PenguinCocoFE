@@ -26,10 +26,9 @@
 
           <transition name="el-zoom-in-top" @leave="leaveTransition">
             <el-row class="filter-section" v-if="isFilterShow">
-              <!-- TODO: tag filter func -->
               <el-col :span="8" class="item">
                 <span class="item-title">題目標籤</span>
-                <el-select class="width-80" v-model="problemTagValue" multiple filterable allow-create default-first-option disabled placeholder="功能尚未開放">
+                <el-select class="width-80" v-model="problemTagValue" multiple filterable allow-create default-first-option>
                   <el-option-group
                     v-for="group in quesTagOptions"
                     :key="group.label"
@@ -69,8 +68,7 @@
                 <a href="javascript:void(0);" @click="doProblem(problem.problemId)">
                   <el-card class="card" shadow="hover">
                     <span class="problem-name ellipsis">{{ problem.name }}
-                      {{problem.tag}}
-                      <el-tag class="tag" effect="plain">Java</el-tag>
+                      <el-tag v-for="tag in problem.tag" :key="tag" class="tag" effect="plain">{{ tag }}</el-tag>
                     </span>
                     <div class="bottom clearfix">
                       <el-rate class="rate" disabled :value="parseInt(problem.rate)"></el-rate>
@@ -85,7 +83,7 @@
           </el-col>
         </el-row>
 
-        <el-row class="none-problem" v-if="modeValue=='undo' && problemsFiltered.length==0 && problemSectionLoading==false">
+        <el-row class="none-problem" v-if="modeValue=='undo' && problemsFiltered.length==0 && problemSectionLoading==false && this.nameFilterValue=='' &&  this.problemTagValue.length==0 && this.typeValue=='全部' && this.sortValue==''">
           <p><img width="25"src="/static/favicon/favicon.png"> &nbsp; 全部題目都完成了喔！ 可以切換到 <span style="color:#1565C0;">已完成</span> 去查看！</p>
         </el-row>
       </el-main>
@@ -156,20 +154,20 @@ export default {
         return filteredTable; // 題目名稱的過濾最優先return
       }
 
-      // TODO: 過濾tag
+      // 過濾tag
       if (this.problemTagValue.length==0) {
         // pass
       } else {
+        let filteredTable = [];
         for (let i=0; i<problemData.length; i++) {
           // or關係
-          let filteredTable = [];
           let theSet = new Set(problemData[i].tag); // 此題tag的set
           let intersect = this.problemTagValue.filter(x => theSet.has(x)); // problemTagValue與theSet的交集
           if (intersect.length > 0) {
             filteredTable.push(problemData[i]);
           }
         }
-        this.problemData = filteredTable;
+        problemData = filteredTable;
       }
 
       // 過濾題目類型(type)

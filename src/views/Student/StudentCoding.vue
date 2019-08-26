@@ -45,7 +45,7 @@
                   </el-row>
                   <el-form-item>
                     <label class="mr-2" prop="label">程式碼</label>
-                    <span><a class="hyperlink" href="javascript:void(0);" @click="commitDialogVisible=true"><i class="el-icon-time"></i> {{commitTableData.length}} commits</a></span>
+                    <span><a class="hyperlink" href="javascript:void(0);" @click="commitDialogVisible=true"><i class="el-icon-time"></i> {{commitTableData.length}} 修改紀錄</a></span>
                     <el-input readonly :class="isBestCode" type="textarea" v-model="judgedResultForm.code" autosize resize="none"></el-input>
                   </el-form-item>
                   <el-form-item label="錯誤訊息" v-if="judgedResultForm.score!='100.0'">
@@ -54,7 +54,7 @@
                         <template slot="title" :name="index">
                           樣本{{index+1}}
                         </template>
-                        <div style="margin-bottom: 10px;">編譯結果：<el-tag type="warning" size="small">{{ judgedResultForm.symbol[index] }}</el-tag></div>
+                        <div class="mb-2">編譯結果：<el-tag type="warning" size="small">{{ judgedResultForm.symbol[index] }}</el-tag></div>
                         <!-- 如果有info顯示info, 無則顯示output -->
                         <el-input readonly type="textarea" autosize resize="none" :value="info" v-if="info"></el-input>
                         <el-input readonly type="textarea" autosize resize="none" :value="judgedResultForm.output[index]" v-else></el-input>
@@ -73,13 +73,13 @@
             <div class="coding-block">
               <div class="setting">
                 <span>Language:</span>
-                <el-select disabled v-model="nowLang" style="width: 100px;"></el-select>
-                <span style="margin-left: 10px;">Theme:</span>
+                <el-select class="width-100" disabled v-model="nowLang"></el-select>
+                <span class="ml-2">Theme:</span>
                 <el-select v-model="nowTheme" @change="changeNowTheme" style="width: 130px;">
                   <el-option v-for="item in themes" :key="item" :label="item" :value="item">
                   </el-option>
                 </el-select>
-                <span style="margin-left: 10px;">FontSize:</span>
+                <span class="ml-2">FontSize:</span>
                 <el-select v-model="fontSize" style="width: 80px;">
                   <el-option v-for="item in fontSizeList" :key="item" :label="item" :value="item">
                   </el-option>
@@ -106,7 +106,7 @@
                 <discuss-correct-form :tabIndex="tabIndex" :data="stud" :index="index" :disabled="correctStatus" :lang="nowLang"></discuss-correct-form>
                 <!-- 送出評分 -->
                 <el-row v-if="!correctStatus">
-                  <el-divider content-position="center" style="font-size: 16px; padding-top: 20px !important;">評分完所有學生後送出評分</el-divider>
+                  <el-divider class="fs-16 pt-4" content-position="center">評分完所有學生後送出評分</el-divider>
                   <el-button class="float-right" type="primary" @click="submitCorrect">送出評分</el-button>
                 </el-row>
               </el-tab-pane>
@@ -137,7 +137,7 @@
   </el-container>
   
   <!-- commitDialog start -->
-  <el-dialog id="commitDialog" :title="problem.name+' commits 紀錄'" :visible.sync="commitDialogVisible" @close="commitDialogActive=false">
+  <el-dialog id="commitDialog" :title="problem.name+' 修改紀錄'" :visible.sync="commitDialogVisible" @close="commitDialogActive=false">
     <el-row class="commit-table" v-if="commitDialogActive==false">
       <el-col :span="22" :offset="1">
         <el-table :data="commitTableData">
@@ -145,7 +145,7 @@
           <el-table-column property="name" label="提交人"></el-table-column>
           <el-table-column fixed="right" label="操作">
             <template slot-scope="scope">
-              <span><a @click="seeCommitCode(scope.row)" href="javascript:void(0)" style="color: #409EFF; text-decoration: none;"><i class="fas fa-code"></i> 檢視</a></span>
+              <span><a class="text-primary text-clean" @click="seeCommitCode(scope.row)" href="javascript:void(0)"><i class="fas fa-code"></i> 檢視</a></span>
             </template>
           </el-table-column>
         </el-table>
@@ -465,7 +465,6 @@ public class Main {
     },
     closePie() {
       this.showPieFlag = false;
-      console.log('z');
     },
     copy(s) {
       // 複製功能
@@ -752,15 +751,6 @@ public class Main {
           this.correctList = res.result;
           this.dicussShowFlag = true;
           this.options.readOnly = true;
-
-          // FIXME:
-          this.$nextTick(() => {
-            this.$refs.discussCodeMirror0[0].value = this.correctList[0].code;
-            var self = this;
-            setTimeout(function() {
-              self.$refs.discussCodeMirror0[0].editor.refresh();
-            },1);
-          });
         }
       });
     },

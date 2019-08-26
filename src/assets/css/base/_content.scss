@@ -1,19 +1,38 @@
-// width style
+// width
 @each $name, $var in $width-scales {
   .width-#{$name} {
-    width: $var;
+    width: $var !important;
   }
 }
 
 @each $name, $var in $width-vw-scales {
   .width-#{$name}-vw {
-    width: $var;
+    width: $var !important;
+  }
+}
+
+// height
+@each $name, $var in $height-scales {
+  .height-#{$name} {
+    height: $var !important;
+  }
+}
+
+@each $name, $var in $height-vw-scales {
+  .height-#{$name}-vh {
+    height: $var !important;
   }
 }
 
 // flex center
-.center {
+.flex-row-center {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }

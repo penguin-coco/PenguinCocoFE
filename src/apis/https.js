@@ -1,27 +1,6 @@
 import axios from 'axios'
-import { Message } from 'element-ui';
 import router from '../router.js'
-
-
-/** 
- * 錯誤msg消息提示的函數
- */
-const tip = msg => {    
-  Message.error(msg);
-}
-
-/** 
- * 跳轉回首頁
- * 攜帶當前的頁面路由, 登入完成後跳轉回原本頁面
- */
-const toLogin = () => {
-  router.replace({
-    name: 'Login',        
-    query: {
-      redirect: router.currentRoute.fullPath
-    }
-  });
-}
+import {tip, toLogin, to403Page} from './utils.js'
 
 /** 
  * 請求失敗的統一處理
@@ -34,17 +13,22 @@ const errorHandle = (status, msg) => {
       tip(msg);
       break;
 
-    // TODO: 401: backend session過期
-    case 403:
-      tip('登入過期，請重新登入');
-      setTimeout(() => {
-        toLogin();
-      }, 1000);
-      break;
+    // 401: backend session過期 => 移到checklogin去判斷
+    // case 401:
+    //   if (router.currentRoute=='Login' || router.currentRoute=='Root') {
+    //     // 不用tip, 會由Login去導向首頁
+    //   } else {
+    //     tip('登入過期，請重新登入');
+    //     setTimeout(() => {
+    //       toLogin();
+    //     }, 1000);
+    //   }
+    //   console.log('登入過期，請重新登入');
+    //   break;
 
     // 403: 權限不足
     case 403:
-      tip(msg);
+      to403Page();
       break;
 
     // 404: 請求失敗

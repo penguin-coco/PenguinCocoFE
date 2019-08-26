@@ -1,4 +1,5 @@
 import {apiCheckLogin} from './base.js'
+import {tip, toLogin, to403Page} from './utils.js'
 
 // student
 export const studentCheckLogin = () => {
@@ -7,15 +8,18 @@ export const studentCheckLogin = () => {
     if (res.status == "200") {
       if (res.result.authority == 'student') {
         // pass
-      } else if (res.result.authority == 'teacher') {
-        this.$router.push('/teacher/courseList');
-      } else if (res.result.authority == 'assistant') {
-        this.$router.push('/assistant/courseList');
-      } else if (res.result.authority == 'admin') {
-        this.$router.push('/admin/index');
-      }  
+      } else {
+        to403Page();
+      }
     } else {
-      this.$router.push('/login');
+      toLogin();
+    }
+  }).catch((error) => {
+    if (error.response.status == '401') {
+      tip('登入過期，請重新登入');
+      setTimeout(() => {
+        toLogin();
+      }, 1000);
     }
   });
 }
@@ -25,17 +29,20 @@ export const teacherCheckLogin = () => {
   apiCheckLogin().then((response) => {
     let res = response.data;
     if (res.status == "200") {
-      if (res.result.authority == 'student') {
-        this.$router.push('/student/courseList')
-      } else if (res.result.authority == 'teacher') {
+      if (res.result.authority == 'teacher') {
         // pass
-      } else if (res.result.authority == 'assistant') {
-        this.$router.push('/assistant/courseList');
-      } else if (res.result.authority == 'admin') {
-        this.$router.push('/admin/index');
-      }  
+      } else {
+        to403Page();
+      }
     } else {
-      this.$router.push('/login');
+      toLogin();
+    }
+  }).catch((error) => {
+    if (error.response.status == '401') {
+      tip('登入過期，請重新登入');
+      setTimeout(() => {
+        toLogin();
+      }, 1000);
     }
   });
 }
@@ -45,17 +52,20 @@ export const assistantCheckLogin = () => {
   apiCheckLogin().then((response) => {
     let res = response.data;
     if (res.status == "200") {
-      if (res.result.authority == 'student') {
-        this.$router.push('/student/courseList')
-      } else if (res.result.authority == 'teacher') {
-        this.$router.push('/teacher/courseList');
-      } else if (res.result.authority == 'assistant') {
+      if (res.result.authority == 'assistant') {
         // pass
-      } else if (res.result.authority == 'admin') {
-        this.$router.push('/admin/index');
-      }  
+      } else {
+        to403Page();
+      }
     } else {
-      this.$router.push('/login');
+      toLogin();
+    }
+  }).catch((error) => {
+    if (error.response.status == '401') {
+      tip('登入過期，請重新登入');
+      setTimeout(() => {
+        toLogin();
+      }, 1000);
     }
   });
 }
@@ -65,17 +75,20 @@ export const quesbankCheckLogin = () => {
   apiCheckLogin().then((response) => {
     let res = response.data;
     if (res.status == "200") {
-      if (res.result.authority == 'student') {
-        this.$router.push('/student/courseList')
-      } else if (res.result.authority == 'teacher') {
+      if (res.result.authority=='teacher' || res.result.authority=='assistant') {
         // pass
-      } else if (res.result.authority == 'assistant') {
-        // pass
-      } else if (res.result.authority == 'admin') {
-        this.$router.push('/admin/index');
-      }  
+      } else {
+        to403Page();
+      }
     } else {
-      this.$router.push('/login');
+      toLogin();
+    }
+  }).catch((error) => {
+    if (error.response.status == '401') {
+      tip('登入過期，請重新登入');
+      setTimeout(() => {
+        toLogin();
+      }, 1000);
     }
   });
 }

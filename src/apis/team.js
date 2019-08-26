@@ -8,3 +8,5 @@ export const apiCheckCorrectedStatus = params => req('get', '/team/checkCorrecte
 export const apiCorrectedInfo = params => req('get', '/team/correctedInfo', params)
 export const apiSubmitCorrect = params => req('post', '/team/submitCorrect', params)
 export const apiDiscussScore = params => req('get', '/team/discussScore', params)
+export const apiTeacherCorrectInfo = params => req('get', '/team/teacher/correctInfo', params)
+export const apiTeacherSubmitCorrect = params => req('post', '/team/teacher/submitCorrect', params)

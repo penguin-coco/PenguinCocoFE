@@ -126,11 +126,12 @@ export default {
         let res = response.data;
         if (res.status == '200') {
           this.courseList = res.result;
+          console.log(this.courseList);
         }
       });
     },
     getAllTaList() { // 取得未被指派的助教名單
-    apiAssistantList().then((response) => {
+      apiAssistantList().then((response) => {
         let res = response.data;
         if (res.status=='200') {
           res.result.forEach((ta) => {
@@ -170,12 +171,13 @@ export default {
       }).then((response) => {
         let res = response.data;
         if (res.status == '200') {
+          this.getCourseList();
+          this.editCourseDialogVisible = false;
           this.$message({
             type: 'success',
             message: '編輯成功!'
           });
-          this.editCourseDialogVisible = false;
-          this.getCourseList();
+          
         }
       });
     },

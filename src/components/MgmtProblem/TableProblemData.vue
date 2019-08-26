@@ -2,7 +2,7 @@
 <div>
   <div class="penguin-box border-radius-none">
     <el-input class='filter-input' v-model='filterQuery' placeholder='請輸入題目ID或名稱' clearable><i slot="prefix" class="el-input__icon el-icon-search"></i></el-input>
-    <el-table :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" style="width: 100%" v-loading="tableLoading">
+    <el-table class="width-100" :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" v-loading="tableLoading">
       <el-table-column type="expand">
         <template slot-scope="props">
         <el-form class="penguin-table-expand" label-position="left" inline>
@@ -11,14 +11,14 @@
             </el-form-item>
             <el-form-item label="已作題人數">
                 <span>{{ props.row.doneStudentNum }}</span>
-                <span class="overview" @click="showDoStatusDialog(props.row.name, 'done')">&nbsp;<i class="fas fa-file-alt"></i></span>
+                <span class="hyperlink" @click="showDoStatusDialog(props.row.name, 'done')">&nbsp;<i class="fas fa-file-alt"></i></span>
             </el-form-item>
             <el-form-item label="題目 ID">
                 <span>{{ props.row.problemId }}</span>
             </el-form-item>
             <el-form-item label="未作題人數">
                 <span>{{ props.row.undoStudentNum }}</span>
-                <span class="overview" @click="showDoStatusDialog(props.row.name, 'undo')">&nbsp;<i class="fas fa-file-alt"></i></span>
+                <span class="hyperlink" @click="showDoStatusDialog(props.row.name, 'undo')">&nbsp;<i class="fas fa-file-alt"></i></span>
             </el-form-item>
             <el-form-item label="難易度">
                 <span><el-rate v-model="props.row.rate" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate></span>
@@ -38,14 +38,14 @@
             </el-form-item>
             <!-- TODO: 討論題:匯出互評成績 -->
             <!-- TODO: 討論題:老師評分學生 -->
-            <el-form-item label="教師評分" v-if="props.row.type=='討論題'">
-                <span><el-button type="warning" size="small" @click="onTeacherDiscuss(props.row.name)" disabled>評分</el-button></span>
+            <el-form-item label="教師評分" v-if="props.row.type=='討論題' && $store.state.user.userInfo.authority=='teacher'">
+                <span><el-button type="warning" size="small" @click="onTeacherDiscuss(props.row.problemId, props.row.name)">評分</el-button></span>
             </el-form-item>
             <!-- TODO: 討論題:老師評分學生 -->
-            <el-form-item label="抄襲偵測" style="width: 100%;" id="detectCopyFormItem" v-loading="detectCopyLoading">
+            <el-form-item class="width-100" id="detectCopyFormItem" label="抄襲偵測" v-loading="detectCopyLoading">
                 <span><el-button type="primary" size="small" @click="detectCopy(props.row.problemId)">偵測</el-button></span>
                 <div class="detectCopyTable">
-                  <el-table v-if="props.row.detectCopyResult.length!=0" :data="props.row.detectCopyResult" style="width: 80%" height="257">
+                  <el-table class="width-80" v-if="props.row.detectCopyResult.length!=0" :data="props.row.detectCopyResult" height="257">
                     <el-table-column prop="studentOneId" label="學生1學號"></el-table-column>
                     <el-table-column prop="studentOneName" label="學生1姓名"></el-table-column>
                     <el-table-column prop="studentTwoId" label="學生2學號"></el-table-column>
@@ -61,8 +61,8 @@
       <el-table-column label="題目名稱" width="230">
         <template slot-scope="scope">
           <a class="hyperlink" href="javascript:void(0)" @click="showProblemInfo(scope.row.problemId)">{{ scope.row.name }}</a>
-          <span v-if="scope.row.status=='可作答'" style="color: #67C23A; font-size: 25px;">&bull;</span>
-          <span v-else style="color: #F56C6C; font-size: 25px;">&bull;</span>
+          <span class="text-success fs-25" v-if="scope.row.status=='可作答'">&bull;</span>
+          <span class="text-danger fs-25" v-else>&bull;</span>
         </template>
       </el-table-column>
       <el-table-column label="類型" prop="type"></el-table-column>
@@ -84,7 +84,7 @@
       </el-table-column>
     </el-table>
   </div>
-  <div style="text-align:center; margin-top:30px;">
+  <div class="text-center mt-6">
     <el-pagination background layout="prev, pager, next" :total="total" @current-change="currentChange"></el-pagination>
   </div>
 
@@ -92,27 +92,27 @@
   <el-dialog id="teacherDiscussDialog" :fullscreen="true" :title="'教師評分 - '+trDiscussProblemName" :visible.sync="teacherDiscussDialogVisible" @open="setDefaultSelectStud" @close="closeTrDiscussDialog">
     <el-container>
       <el-aside>
-        <el-menu @select="tdSelectStud" :default-active="selectedAccount">
+        <el-menu @select="tdSelectStud" :default-active="selectedAccount" style="height: 100%;">
           <el-menu-item v-for="(stud,index) in tdStudsAllList" :index="stud.account" :key="index">
             <i class="el-icon-user-solid"></i>
             <span slot="title">{{ stud.name }}
               <!-- 學生是否完成做題 -->
-              <span v-if="stud.isJudged" style="color: #E6A23C; font-size: 12px;">已做題</span>
-              <span v-else style="color: #909399; font-size: 12px;">未做題</span>
+              <span class="text-warning fs-12" v-if="stud.isJudged">已做題</span>
+              <span class="text-info fs-12" v-else>未做題</span>
             </span>
             <!-- 老師是否完成批改 -->
-            <span style="float:right; color:#67C23A;" v-if="stud.isTrJudged">
-              <i class="el-icon-check" style="color:#67C23A;"></i>批改完成
+            <span class="float-right text-success" v-if="stud.isTrJudged">
+              <i class="el-icon-check text-success"></i>批改完成
             </span>
-            <span style="float:right; color:#F56C6C;" v-else>
-              <i class="el-icon-close" style="color:#F56C6C;"></i>尚未批改
+            <span class="float-right text-danger" v-else>
+              <i class="el-icon-close text-danger"></i>尚未批改
             </span>
           </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>
         <discuss-correct-form :data="tdCodeData[selectedAccount]" :lang="nowLang"></discuss-correct-form>
-        <el-button type="primary" style="float: right; margin-top: 25px;">送出</el-button>
+        <el-button class="float-right mt-5" type="primary" @click="trSubmitCorrect">送出</el-button>
       </el-main>
     </el-container>
   </el-dialog>
@@ -123,6 +123,8 @@
 
 <script>
 import axios from 'axios'
+import {apiTeacherCorrectInfo, apiTeacherSubmitCorrect} from '@/apis/team.js'
+
 import { json2csv } from '@/utils/json2csv.js'
 
 import DiscussCorrectForm from '@/components/Student/DiscussCorrectForm'
@@ -146,72 +148,14 @@ export default {
       // detectCopyLoading
       detectCopyLoading: false,
       // FIXME: 老師評分
+      trProblemId: '', // 老師正在評分的problemId
       teacherDiscussDialogVisible: false,
       trDiscussProblemName: '',
       codeSection: '',
       selectedAccount: '', // 當前選擇的account
       nowLang: '', // 此題目的程式語言
-      tdStudsAllList: [{
-        name: '蘇靖軒',
-        account: '04156147',
-        isJudged: false,
-        isTrJudged: false
-      }, {
-        name: '陳冠毅',
-        account: '04156211',
-        isJudged: true,
-        isTrJudged: true
-      }],
-      tdCodeData: {
-        '04156147': {
-          code: 'zzzafadafwad',
-          correctValue: {
-            score: 0,
-            comment: ''
-          },
-          readValue: {
-            score: 0,
-            comment: ''
-          },
-          skillValue: {
-            score: 0,
-            comment: ''
-          },
-          completeValue: {
-            score: 0,
-            comment: ''
-          },
-          wholeValue: {
-            score: 0,
-            comment: ''
-          },
-          comment: ''
-        },
-        '04156211': {
-          code: 'java import zz',
-          correctValue: {
-            score: 0,
-            comment: ''
-          },
-          readValue: {
-            score: 0,
-            comment: ''
-          },
-          skillValue: {
-            score: 0,
-            comment: ''
-          },
-          completeValue: {
-            score: 0,
-            comment: ''
-          },
-          wholeValue: {
-            score: 0,
-            comment: ''
-          },
-          comment: ''
-        }
-      }
+      tdStudsAllList: [],
+      tdCodeData: {}
     }
   },
   computed: {
@@ -235,14 +179,68 @@ export default {
   },
   methods: {
     // FIXME:
-    onTeacherDiscuss(problemName) {
+    getTDStudsAllList(problemId) {
+      apiTeacherCorrectInfo({
+        problemId: problemId
+      }).then((response) => {
+        let res = response.data;
+        if (res.status == '200') {
+          let result = res.result;
+          // 設置 tdStudsAllList:[{name, account, isJudged, isTrJudged}]
+          result.forEach((item) => {
+            let obj = {
+              name: item.studentName,
+              account: item.studentAccount,
+              isJudged: item.isJudged,
+              isTrJudged: item.isTrJudged
+            }
+            this.tdStudsAllList.push(obj);
+          });
+
+          // 設置 tdCodeData
+          let tempObj = {};
+          result.forEach((item) => {
+            let obj = {
+              code: item.code,
+              correctValue: {
+                score: 0,
+                comment: ""
+              },
+              readValue: {
+                score: 0,
+                comment: ""
+              },
+              skillValue: {
+                score: 0,
+                comment: ""
+              },
+              completeValue: {
+                score: 0,
+                comment: ""
+              },
+              wholeValue: {
+                score: 0,
+                comment: ""
+              },
+              comment: ""
+            }
+            tempObj[item.studentAccount] = obj;
+          });
+          this.tdCodeData = Object.assign({}, tempObj); // obj深拷貝
+
+          // 預設選擇第一個同學
+          this.tdSelectStud(this.tdStudsAllList[0].account);
+        }
+      })
+    },
+    onTeacherDiscuss(problemId, problemName) {
+      this.trProblemId = problemId;
+      this.getTDStudsAllList(problemId);
       this.trDiscussProblemName = problemName;
       this.teacherDiscussDialogVisible = true;
     },
     // @open
     setDefaultSelectStud() {
-      this.tdSelectStud(this.tdStudsAllList[0].account);
-
       // 老師批改區塊scroll回到最頂
       let element = document.getElementById('teacherDiscussDialog').getElementsByClassName('el-main')[0];
       element.scrollTo(0,0);
@@ -254,16 +252,43 @@ export default {
       element.scrollTo(0,0);
 
       this.teacherDiscussDialogVisible = false;
+      this.tdStudsAllList = [];
+      this.tdCodeData = {};
     },
     tdSelectStud(account) {
-      console.log(account);
-      console.log(this.tdCodeData[account]);
       // this.codeSection = this.tdCodeData[account].code;
       this.selectedAccount = account;
       
       // 老師批改區塊scroll回到最頂
       let element = document.getElementById('teacherDiscussDialog').getElementsByClassName('el-main')[0];
       element.scrollTo(0,0);
+    },
+    trSubmitCorrect() {
+      apiTeacherSubmitCorrect({
+        problemId: this.trProblemId,
+        correctedAccount: this.selectedAccount,
+        correctValue: this.tdCodeData[this.selectedAccount].correctValue,
+        readValue: this.tdCodeData[this.selectedAccount].readValue,
+        skillValue: this.tdCodeData[this.selectedAccount].skillValue,
+        completeValue: this.tdCodeData[this.selectedAccount].completeValue,
+        wholeValue: this.tdCodeData[this.selectedAccount].wholeValue,
+        comment: this.tdCodeData[this.selectedAccount].comment
+      }).then((response) => {
+        let res = response.data;
+        if (res.status == '200') {
+          this.$message({
+            message: this.selectedAccount + '完成評分',
+            type: 'success'
+          });
+          
+          // 把學生list打勾成 完成評分
+          this.tdStudsAllList.forEach((item) => {
+            if (item.account == this.selectedAccount) {
+              item.isTrJudged = true;
+            }
+          });
+        }
+      });
     },
     setLanguage(tags) {
       tags.forEach((tag) => {

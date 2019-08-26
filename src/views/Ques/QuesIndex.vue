@@ -26,7 +26,7 @@
                 </el-option>
               </el-option-group>
             </el-select>
-            <el-table :data="tableFiltered" style="width: 100%" v-loading="tableLoading">
+            <el-table class="width-100" :data="tableFiltered" v-loading="tableLoading">
               <el-table-column label="題目 ID" prop="id"></el-table-column>
               <el-table-column label="題目名稱">
                 <template slot-scope="scope">
@@ -36,7 +36,7 @@
               <el-table-column label="題目類型" prop="category"></el-table-column>
               <el-table-column label="標籤">
                 <template slot-scope="scope">
-                  <span v-for="t in scope.row.tag" style="margin-right: 5px;">
+                  <span class="mr-1" v-for="t in scope.row.tag">
                     <el-tag>{{t}}</el-tag>
                   </span>
                 </template>
@@ -135,12 +135,12 @@
             <el-tag :key="tag" v-for="tag in editProblemData.tag" closable :disable-transitions="false" @close="handleClose(tag)">
               {{tag}}
             </el-tag>
-            <el-autocomplete class="input-new-tag" v-if="inputVisible" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm" v-model="inputValue" popper-class="my-autocomplete" :fetch-suggestions="querySearch" @select="handleSelect">
+            <el-autocomplete class="penguin-auto-input" v-if="inputVisible" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm" v-model="inputValue" popper-class="my-autocomplete" :fetch-suggestions="querySearch" @select="handleSelect">
               <template slot-scope="{ item }">
                 <div class="name">{{ item.value }}</div>
               </template>
             </el-autocomplete>
-            <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+            <el-button v-else class="penguin-new-tag-btn" size="small" @click="showInput">+ New Tag</el-button>
           </el-form-item>
           <!-- TAGs -->
         </el-col>
@@ -187,7 +187,7 @@
       </el-row>
       <el-row>
         <el-col :span="22" :offset="2">
-          <p style="color: #F56C6C; margin-top: 0px;">注意！ 最後一項範例會作為隱藏範例，學生題目中看不見！</p>
+          <p class="text-danger mt-0">注意！ 最後一項範例會作為隱藏範例，學生題目中看不見！</p>
         </el-col> 
       </el-row>
       <el-row>

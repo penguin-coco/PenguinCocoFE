@@ -28,7 +28,9 @@ import AssistantFeedback from '@/views/Assistant/AssistantFeedback'
 import QuesIndex from '@/views/Ques/QuesIndex'
 import QuesNewProblem from '@/views/Ques/QuesNewProblem'
 
-import ErrorPage404 from '@/components/ErrorPage404.vue'
+import ErrorPage403 from '@/components/Error/ErrorPage403.vue'
+import ErrorPage404 from '@/components/Error/ErrorPage404.vue'
+
 
 Vue.use(Router)
 
@@ -145,6 +147,12 @@ export default new Router({
       component: QuesNewProblem
     },
     {
+      name: '403',
+      path: '/error/403',
+      component: ErrorPage403
+    },
+    {
+      name: '404',
       path: '*',
       component: ErrorPage404
     },

@@ -6,11 +6,12 @@
 
 @mixin hyperlink {
   text-decoration: none;
-  color: $main-text-color;
+  color: $regular-text-color;
   transition: $quick-transition;
 
   &:hover {
-    color: $primary-text-color;
+    color: $primary-text-color !important;
+    cursor: pointer;
   }
 }
 

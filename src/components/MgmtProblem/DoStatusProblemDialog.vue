@@ -7,14 +7,14 @@
         <div class="penguin-content-header">
           <div class="content-title">{{ problemName }}</div>
         </div>
-        <el-table max-height="336" :data="data" style="width: 100%; margin-bottom: 60px;">
+        <el-table class="width0-100 mb-12" max-height="336" :data="data">
           <el-table-column prop="studentId" label="學生學號">
           </el-table-column>
           <el-table-column prop="studentName" label="學生姓名"></el-table-column>
           <el-table-column prop="score" label="成績"></el-table-column>
           <el-table-column v-if="status=='done'" label="程式碼">
             <template slot-scope="scope">
-              <span><a @click="seeStudentCode(scope.row)" href="javascript:void(0)" style="color: #409EFF; text-decoration: none;"><i class="fas fa-code"></i> 檢視</a></span>
+              <span><a class="text-primary text-clean" @click="seeStudentCode(scope.row)" href="javascript:void(0)"><i class="fas fa-code"></i> 檢視</a></span>
             </template>
           </el-table-column>
         </el-table>
@@ -22,16 +22,14 @@
     </el-row>
     <el-row v-if="doInfoDialogActiveStudentCode">
       <el-col>
-        <div class="code">
-          <el-breadcrumb separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item>
-              <a href="javascript:void(0)" @click="doInfoDialogActiveStudentCode=false" style="text-decoration: none; ">{{problemName}}</a>
-            </el-breadcrumb-item>
-            <el-breadcrumb-item>{{doInfoDianlogNowStudentId}} {{doInfoDianlogNowStudentName}}</el-breadcrumb-item>
-          </el-breadcrumb>
-          <codemirror v-model="doInfoDianlogNowStudentCode" :options="options" style="margin-top: 20px;"></codemirror>
-          <a class="code-copy" @click="copy(doInfoDianlogNowStudentCode)"><i class="el-icon-document"></i>複製代碼</a>
-        </div>
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+          <el-breadcrumb-item>
+            <a class="text-clean" href="javascript:void(0)" @click="doInfoDialogActiveStudentCode=false">{{problemName}}</a>
+          </el-breadcrumb-item>
+          <el-breadcrumb-item>{{doInfoDianlogNowStudentId}} {{doInfoDianlogNowStudentName}}</el-breadcrumb-item>
+        </el-breadcrumb>
+        <codemirror class="mt-4" v-model="doInfoDianlogNowStudentCode" :options="options"></codemirror>
+        <a class="hyperlink float-right mt-2" @click="copy(doInfoDianlogNowStudentCode)"><i class="el-icon-document"></i>複製代碼</a>
       </el-col>
     </el-row>
   </el-dialog>
@@ -105,18 +103,3 @@ export default {
   }
 }
 </script>
-
-<style>
-.code .code-copy {
-  cursor: pointer;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  float: right;
-  color: #303133;
-  transition: all .3s ease;
-}
-
-.code .code-copy:hover {
-  color: #409EFF;
-}
-</style>

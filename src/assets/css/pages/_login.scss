@@ -38,6 +38,12 @@
       left: 6%;
       bottom: 15%;
       color: white;
+
+      .version {
+        &:hover {
+          color: $warning-text-color !important;
+        }
+      }
     }
   }
 

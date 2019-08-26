@@ -34,7 +34,8 @@
       </div>
 
       <div class="author">
-        <p>Powered by <span style="color:#E6A23C;"> <img width="12" src="/static/favicon/favicon.png"> Penguin Tech. </span> &copy; {{ new Date().getFullYear() }}</p>
+        <p class="d-inline-block">Powered by <span class="text-warning"> <img width="12" src="/static/favicon/favicon.png"> Penguin Tech. </span> &copy; {{ new Date().getFullYear() }}</p>
+        <p class="d-inline-block">&nbsp;·&nbsp;<span class="version hyperlink text-white">1.0.2</span></p>
       </div>
     </el-col>
 
@@ -52,7 +53,7 @@
               <el-form-item label="Password" prop="password">
                 <el-input type="password" v-model="loginForm.password" auto-complete="off" placeholder="密碼" show-password></el-input>
               </el-form-item>
-              <el-row style="padding-bottom: 30px; margin-top:50px;">
+              <el-row class="pb-6 mt-10">
                 <el-col :span="24">
                   <el-button class="login-btn" round type="primary" @click="login">登入</el-button>
                 </el-col>
@@ -122,19 +123,23 @@ export default {
         }).then((response) => {
           let res = response.data;
           if (res.status == "200") {
+            let auth = res.result.authority;
+
             // 記錄到state.user
             this.$store.commit('initUserInfo', {
               account: this.loginForm.account,
-              auth: res.result
+              auth: auth
             });
 
-            if (res.result == 'student') {
+            if (this.$route.query.redirect) { // 如果有重新導向的params
+              this.$router.push(this.$route.query.redirect);
+            } else if (auth == 'student') {
               this.$router.push("/student/courseList");
-            } else if (res.result == 'teacher') {
+            } else if (auth == 'teacher') {
               this.$router.push("/teacher/courseList");
-            } else if (res.result == 'assistant') {
+            } else if (auth == 'assistant') {
               this.$router.push("/assistant/courseList");
-            } else if (res.result == 'admin') {
+            } else if (auth == 'admin') {
               this.$router.push("/admin/index");
             } 
           } else {

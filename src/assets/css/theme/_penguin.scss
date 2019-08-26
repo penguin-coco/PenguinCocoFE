@@ -36,7 +36,7 @@
     display: inline-block;
     margin-right: 20px;
     font-size: 24px;
-    border-bottom: 2px solid $sucess-text-color;
+    border-bottom: 2px solid $success-text-color;
   }
 
   // 較小巧精緻
@@ -50,6 +50,8 @@
 /* 題目的格式 */
 .penguin-problem {
   .problem-header {
+    position: relative;
+
     .name {
       @include penguin-box-title;
     }
@@ -163,5 +165,82 @@
     justify-content: center;
     height: 60px;
     margin-right: 20px;
+  }
+}
+
+/* 新增or編輯題目：tag選擇器 */
+.penguin-auto-input {
+  width: 90px;
+  vertical-align: bottom;
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+.penguin-new-tag-btn {
+  height: 32px;
+  line-height: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  &:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+/* 新增題目：markdown preview */
+.penguin-md-preview {
+  font-size: 18px;
+  line-height: 25px;
+  color: #666;
+}
+
+
+// error page
+.penguin-error-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .error-main {
+    text-align: center;
+    margin: 0 auto;
+
+    .error-img {
+      width: 150px;
+      border-radius: 25px;
+    }
+
+    .error-code {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .back-original-page {
+      margin-top: 20px;
+      transition: all .3s ease;
+
+      &:hover {
+        color: $primary-text-color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .error-footer {
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    color: #909399;
+    font-weight: bold;
+    transition: all .3s ease;
+
+    &:hover {
+      color: $primary-text-color;
+    }
   }
 }

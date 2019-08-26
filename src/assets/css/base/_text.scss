@@ -1,8 +1,27 @@
-// text
-@each $var in $text-scales {
-  .text-#{$var} {
-    text-align: $var;
+// text color
+@each $name, $var in $text-color-scales {
+  .text-#{$name} {
+    color: $var !important;
   }
+}
+
+// text align
+@each $var in $text-align-scales {
+  .text-#{$var} {
+    text-align: $var !important;
+  }
+}
+
+// font size
+@each $name, $var in $font-size-scales {
+  .fs-#{$name} {
+    font-size: $var !important;
+  }
+}
+
+// text decoration
+.text-clean {
+  text-decoration: none !important;
 }
 
 // hyperlink

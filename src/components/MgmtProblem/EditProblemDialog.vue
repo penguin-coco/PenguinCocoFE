@@ -21,12 +21,12 @@
             <el-tag :key="tag" v-for="tag in data.tag" closable :disable-transitions="false" @close="handleClose(tag)">
               {{tag}}
             </el-tag>
-            <el-autocomplete class="input-new-tag" v-if="inputVisible" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm" v-model="inputValue" popper-class="my-autocomplete" :fetch-suggestions="querySearch" @select="handleSelect">
+            <el-autocomplete class="penguin-auto-input" v-if="inputVisible" ref="saveTagInput" size="small" @keyup.enter.native="handleInputConfirm" v-model="inputValue" popper-class="my-autocomplete" :fetch-suggestions="querySearch" @select="handleSelect">
               <template slot-scope="{ item }">
                 <div class="name">{{ item.value }}</div>
               </template>
             </el-autocomplete>
-            <el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+            <el-button v-else class="penguin-new-tag-btn" size="small" @click="showInput">+ New Tag</el-button>
           </el-form-item>
           <!-- TAGs -->
         </el-col>
@@ -396,33 +396,5 @@ export default {
 <style>
 #editProblemDialog .el-dialog {
   width: 70vw;
-}
-
-/* tag style */
-.el-tag + .el-tag {
-  margin-left: 10px;
-}
-
-.button-new-tag {
-  margin-left: 10px;
-  height: 32px;
-  line-height: 30px;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.input-new-tag {
-  width: 90px;
-  margin-left: 10px;
-  vertical-align: bottom;
-}
-
-.overview {
-  transition: all .3s ease;
-}
-
-.overview:hover {
-  color: #409EFF;
-  cursor: pointer;
 }
 </style>
