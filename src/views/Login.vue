@@ -35,7 +35,7 @@
 
       <div class="author">
         <p class="d-inline-block">Powered by <span class="text-warning"> <img width="12" src="/static/favicon/favicon.png"> Penguin Tech. </span> &copy; {{ new Date().getFullYear() }}</p>
-        <p class="d-inline-block">&nbsp;·&nbsp;<span class="version hyperlink text-white">1.0.2</span></p>
+        <p class="d-inline-block" @click="toVersionPage">&nbsp;·&nbsp;<span class="version hyperlink text-white">v 1.0.3</span></p>
       </div>
     </el-col>
 
@@ -153,6 +153,9 @@ export default {
         });
       }
     },
+    toVersionPage() {
+      window.open('/version', '_blank');
+    }
   }
 }
 </script>

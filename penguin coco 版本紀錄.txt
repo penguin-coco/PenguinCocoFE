@@ -1,20 +1,31 @@
+[v1.0.0]
+## Penguin Coco 誕生
+RIP CSIM OJ
+
+[v1.0.1]
+## Penguin內部重整
+* 修正
+  1. 重構程式碼
+* 待更新
+  1. 老師評論討論題功能預先設計
+
 [v1.0.2]
-# Penguin Coco 新UI 全新登場！
+## Penguin Coco 新UI 全新登場！
 * 新增
   1. UI/UX全面重新設計
   2. APIs 統一管理
   3. scss 管理頁面style
   4. StudentCoding：此題作答狀況使用fixed btn呈現 pie chart
 * 待更新
-  1. axios攔截器
+  1. 權限處理
   2. 討論題：老師評分學生程式碼
   3. 新增學生：完善excel匯入學生部分
 
 
 [v1.0.3]
+## 更安全、更強大
 * 新增
   1. 權限控制 & 登入超時處理
   2. 學生首頁：題目tag filter功能開放
   3. 老師、助教透過csv匯入學生功能
   4. 討論題：老師評論學生功能
-  5. 老師及助教後台

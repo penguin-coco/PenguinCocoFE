@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Login from '@/views/Login.vue'
+import Version from '@/views/Version.vue'
+
 import StudentCourseList from '@/views/Student/StudentCourseList' 
 import StudentIndex from '@/views/Student/StudentIndex'
 import StudentScorePanel from '@/views/Student/StudentScorePanel'
@@ -45,6 +48,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/version',
+      name: 'Version',
+      component: Version
     },
     {
       path: '/student/courseList',

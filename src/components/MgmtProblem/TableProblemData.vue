@@ -202,27 +202,12 @@ export default {
           result.forEach((item) => {
             let obj = {
               code: item.code,
-              correctValue: {
-                score: 0,
-                comment: ""
-              },
-              readValue: {
-                score: 0,
-                comment: ""
-              },
-              skillValue: {
-                score: 0,
-                comment: ""
-              },
-              completeValue: {
-                score: 0,
-                comment: ""
-              },
-              wholeValue: {
-                score: 0,
-                comment: ""
-              },
-              comment: ""
+              correctValue: item.correctValue,
+              readValue: item.readValue,
+              skillValue: item.skillValue,
+              completeValue: item.completeValue,
+              wholeValue: item.wholeValue,
+              comment: item.comment
             }
             tempObj[item.studentAccount] = obj;
           });
