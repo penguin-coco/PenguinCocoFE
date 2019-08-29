@@ -262,6 +262,8 @@ export default {
         } else {
           this.$message.error('找不到此學號的學生！');
         }
+      }).catch((error) => {
+        this.$message.error('新增學生錯誤，可能有已加入的學生');
       });
     },
     asstAddStudent(studAccountList) {
@@ -284,6 +286,8 @@ export default {
         } else {
           this.$message.error('找不到此學號的學生！');
         }
+      }).catch((error) => {
+        this.$message.error('新增學生錯誤，可能有已加入的學生');
       });
     },
     addNewOneStudent() {
@@ -300,7 +304,12 @@ export default {
       this.csvFileData.forEach((stud) => {
         accountList.push(stud.account);
       });
-      this.asstAddStudent(accountList);
+
+      if (this.$store.state.user.userInfo.authority == 'teacher') {
+        this.trAddStudent(accountList);
+      } else if (this.$store.state.user.userInfo.authority == 'assistant') {
+        this.asstAddStudent(accountList);
+      }
     },
     csvFormatAlert() {
       this.$alert('account', 'Csv欄位格式', {

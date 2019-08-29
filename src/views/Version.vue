@@ -4,7 +4,7 @@
     <header id="version-header">
       <div class="logo">
         <img src="/static/logo/penguin-edge.png">
-        <span class="fs-20 text-white ml-4">版本紀錄</span>
+        <span class="d-inline-block fs-20 text-white ml-4">版本紀錄</span>
       </div>
     </header>
     <el-col class="mb-5" :span="16" :offset="4">
@@ -86,7 +86,6 @@ R.I.P CSIM OJ`
   }
 
   img {
-    margin-top: 8px;
     width: 135px;
   }
 }
