@@ -16,14 +16,14 @@
           <el-col :xs="24" :sm="8" class="user-section">
             <el-card shadow="hover" style="height: 286px;">
               <div class="penguin-content-header border-bottom-none mb-1">
-                <span class="gentle-content-title">個人資料</span>
+                <span class="gentle-content-title">{{ $t('student.myPage.personalInfo') }}</span>
                 <div class="float-right mr-3">
                   <el-dropdown trigger="click" @command="dropdownCmd">
                     <span class="el-dropdown-link">
                       <i class="el-icon-more fs-20"></i>
                     </span>
                     <el-dropdown-menu slot="dropdown">
-                      <el-dropdown-item icon="el-icon-paperclip" command="0">更改密碼</el-dropdown-item>
+                      <el-dropdown-item icon="el-icon-paperclip" command="0">{{ $t('student.myPage.changePwd') }}</el-dropdown-item>
                     </el-dropdown-menu>
                   </el-dropdown>
                 </div>
@@ -47,7 +47,7 @@
           <el-col :xs="24" :sm="8" class="answer-section">
             <el-card shadow="hover" style="height: 286px;">
               <div class="penguin-content-header border-bottom-none mb-1">
-                <span class="gentle-content-title">作答資訊</span>
+                <span class="gentle-content-title">{{ $t('student.myPage.answerStatus') }}</span>
               </div>
               <div class="flex-row-center">
                 <el-progress type="circle" :percentage="donePercent"></el-progress>
@@ -55,18 +55,36 @@
               <el-row class="mt-3" justify="center">
                 <el-col :span="24">
                   <el-col class="text-center" :span="8">
-                    <span class="done">已完成</span>&nbsp;&nbsp;&nbsp;
+                    <span class="done">{{ $t('student.myPage.solved') }}</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{ user.doneNum }}</span>
                   </el-col> 
                   <el-col class="text-center" :span="8">
-                    <span class="undo">未完成</span>&nbsp;&nbsp;&nbsp;
+                    <span class="undo">{{ $t('student.myPage.todo') }}</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{ user.undoNum }}</span>
                   </el-col>
                   <el-col class="text-center" :span="8">
-                    <span class="best">最佳解答</span>&nbsp;&nbsp;&nbsp;
+                    <span class="best">{{ $t('student.myPage.best') }}</span>&nbsp;&nbsp;&nbsp;
                     <span class="num">{{user.bestNum}}</span>
                   </el-col> 
                 </el-col>
+              </el-row>
+            </el-card>
+          </el-col>
+
+          <el-col :xs="24" :sm="8" class="system-section">
+            <el-card shadow="hover" style="height: 286px;">
+              <div class="penguin-content-header border-bottom-none mb-1">
+                <span class="gentle-content-title">{{ $t('student.myPage.systemSetting') }}</span>
+              </div>
+              <el-row class="mt-3" justify="center">
+                <el-form class="ml-10" :model="systemForm">
+                  <el-form-item :label="$t('student.myPage.language')">
+                    <el-radio-group v-model="systemForm.lang" @change="changeSysLang">
+                      <el-radio :label="$t('student.myPage.zh_tw')"></el-radio>
+                      <el-radio :label="$t('student.myPage.en')"></el-radio>
+                    </el-radio-group>
+                  </el-form-item>
+                </el-form>
               </el-row>
             </el-card>
           </el-col>
@@ -119,7 +137,11 @@ export default {
       // percentage
       donePercent: 0,
       // drawer
-      pwdDrawerVisible: false
+      pwdDrawerVisible: false,
+      // set system
+      systemForm: {
+        lang: this.$i18n.locale=='zh_TW'?'繁體中文':'English'
+      }
     }
   },
   methods: {
@@ -156,6 +178,15 @@ export default {
     setDonePercent() {
       let total = parseInt(this.user.doneNum) + parseInt(this.user.undoNum);
       this.donePercent =  Math.round(parseInt(this.user.doneNum)/total*100);
+    },
+    changeSysLang() {
+      if (this.systemForm.lang=='繁體中文' || this.systemForm.lang=='Traditional Chinese') {
+        this.systemForm.lang = '繁體中文';
+        this.$i18n.locale = 'zh_TW';
+      } else if (this.systemForm.lang=='英文' || this.systemForm.lang=='en') {
+        this.systemForm.lang = 'English';
+        this.$i18n.locale = 'en';
+      }
     }
   }
 }

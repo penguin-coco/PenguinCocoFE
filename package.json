@@ -1,6 +1,6 @@
 {
   "name": "penguin-coco",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -19,6 +19,7 @@
     "vue": "^2.6.10",
     "vue-code-diff": "^0.0.4",
     "vue-codemirror-lite": "^1.0.4",
+    "vue-i18n": "^8.14.0",
     "vue-markdown": "^2.2.4",
     "vue-progressbar": "^0.7.5",
     "vue-router": "^3.0.3",

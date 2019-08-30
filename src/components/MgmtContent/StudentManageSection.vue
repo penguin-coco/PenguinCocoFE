@@ -197,7 +197,6 @@ export default {
         });
       });
     },
-    // FIXME: upload csv then parse
     handleSuccess(res, file, fileList) {
       let self = this;
       // parse local csv file
@@ -260,10 +259,10 @@ export default {
           this.confirmCsvDialogVisible = false;
           this.getStudentsData();
         } else {
-          this.$message.error('找不到此學號的學生！');
+          this.$message.error(res.msg);
         }
       }).catch((error) => {
-        this.$message.error('新增學生錯誤，可能有已加入的學生');
+        this.$message.error('新增學生錯誤');
       });
     },
     asstAddStudent(studAccountList) {
@@ -284,10 +283,10 @@ export default {
           this.confirmCsvDialogVisible = false;
           this.getStudentsData();
         } else {
-          this.$message.error('找不到此學號的學生！');
+          this.$message.error(res.msg);
         }
       }).catch((error) => {
-        this.$message.error('新增學生錯誤，可能有已加入的學生');
+        this.$message.error('新增學生錯誤');
       });
     },
     addNewOneStudent() {

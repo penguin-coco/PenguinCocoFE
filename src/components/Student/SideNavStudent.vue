@@ -3,23 +3,23 @@
   <el-menu :default-active="$route.path" style="height: calc(100vh - 60px); overflow: initial;" router>
     <el-menu-item :index="problemIndex">
       <i class="el-icon-menu"></i>
-      <span slot="title">題目列表</span>
+      <span slot="title">{{ $t('student.header.problemList') }}</span>
     </el-menu-item>
     <el-menu-item :index="scorePanelIndex">
       <i class="el-icon-document"></i>
-      <span slot="title">成績面板</span>
+      <span slot="title">{{ $t('student.header.scorePanel') }}</span>
     </el-menu-item>
     <el-menu-item :index="mypageIndex">
       <i class="el-icon-setting"></i>
-      <span slot="title">個人中心</span>
+      <span slot="title">{{ $t('student.header.myPage') }}</span>
     </el-menu-item>
     <el-menu-item @click="showRankDialog">
       <i class="el-icon-trophy-1"></i>
-      <span slot="title">排行榜</span>
+      <span slot="title">{{ $t('student.header.rank') }}</span>
     </el-menu-item>
     <el-menu-item @click="sendFeedback">
       <i class="el-icon-edit"></i>
-      <span slot="title">意見回饋</span>
+      <span slot="title">{{ $t('student.header.feedback') }}</span>
     </el-menu-item>
   </el-menu>
 
@@ -55,9 +55,9 @@ export default {
     },
     // feedback
     sendFeedback() {
-      this.$prompt('請輸入對系統的建議', '系統回饋', {
-        confirmButtonText: '確定',
-        cancelButtonText: '取消',
+      this.$prompt(this.$i18n.t('student.feedback.modalTitle'), this.$i18n.t('student.header.feedback'), {
+        confirmButtonText: this.$i18n.t('base.ok'),
+        cancelButtonText: this.$i18n.t('base.cancel'),
         inputType: 'textarea'
       }).then(({
         value
@@ -70,19 +70,19 @@ export default {
           if (res.status == '200') {
             this.$message({
               type: 'success',
-              message: '已經收到您的回饋！'
+              message: this.$i18n.t('student.feedback.getFeedback')
             });
           } else {
             this.$message({
               type: 'error',
-              message: '傳送回饋失敗 :('
+              message: this.$i18n.t('student.feedback.errorFeedback')
             });
           }
         });
       }).catch(() => {
         this.$message({
           type: 'info',
-          message: '取消輸入'
+          message: this.$i18n.t('student.feedback.cancelFeedback')
         });
       });
     },

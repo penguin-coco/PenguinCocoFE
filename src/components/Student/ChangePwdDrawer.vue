@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-drawer
-    title="更改密碼"
+    :title="$t('student.myPage.changePwd')"
     :visible.sync="myVisible"
     direction="ltr"
     id="changePwd-drawer"
@@ -9,23 +9,23 @@
     >
     <div class="drawer__content">
       <el-form :model="form" label-position="top" style="height: 95%;">
-        <el-form-item label="帳號">
+        <el-form-item :label="$t('base.account')">
           <el-input class="width-80" v-model="form.account"></el-input>
         </el-form-item>
-        <el-form-item label="原密碼">
+        <el-form-item :label="$t('student.myPage.oriPwd')">
           <el-input class="width-80" v-model="form.oriPassword"></el-input>
         </el-form-item>
-        <el-form-item label="新密碼">
+        <el-form-item :label="$t('student.myPage.newPwd')">
           <el-input class="width-80" v-model="form.newPassword"></el-input>
         </el-form-item>
       </el-form>
       <div class="drawer__footer">
         <el-row class="width-100" :gutter="20">
           <el-col :span="12">
-            <el-button class="width-100 text-center" @click="closeDrawer">取 消</el-button>
+            <el-button class="width-100 text-center" @click="closeDrawer">{{ $t('base.cancel') }}</el-button>
           </el-col>
           <el-col :span="12">
-            <el-button class="width-100 text-center" type="primary" @click="changePassword">確 定</el-button>
+            <el-button class="width-100 text-center" type="primary" @click="changePassword">{{ $t('base.ok') }}</el-button>
           </el-col>
         </el-row>
       </div>

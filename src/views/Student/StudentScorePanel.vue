@@ -16,20 +16,20 @@
           <el-col :xs="24" :sm="12">
             <el-card shadow="hover">
               <div class="penguin-content-header border-bottom-none">
-                <span class="gentle-content-title">正確率</span>
+                <span class="gentle-content-title">{{ $t('student.scorePanel.correctRate') }}</span>
               </div>
               <ve-pie :data="pieData" :colors="pieColors" :settings="pieSettings">
-                <div class="data-empty" v-if="hasRecordFlag">沒有數據 &#x1F61D;</div>
+                <div class="data-empty" v-if="hasRecordFlag">{{ $t('base.noData') }} &#x1F61D;</div>
               </ve-pie>
             </el-card>
           </el-col>
           <el-col :xs="24" :sm="12">
             <el-card shadow="hover">
               <div class="penguin-content-header border-bottom-none">
-                <span class="gentle-content-title">成績圖表</span>
+                <span class="gentle-content-title">{{ $t('student.scorePanel.gradeChart') }}</span>
               </div>
               <ve-line :data="lineData" :settings="lineSettings">
-                <div class="data-empty" v-if="hasRecordFlag">沒有數據 &#x1F61D;</div>
+                <div class="data-empty" v-if="hasRecordFlag">{{ $t('base.noData') }} &#x1F61D;</div>
               </ve-line>
             </el-card>
           </el-col>
@@ -39,35 +39,35 @@
         <el-col :span="24">
           <el-card class="p-4" shadow="hover">
             <div class="penguin-content-header border-bottom-none">
-              <span class="gentle-content-title">歷史成績</span>
+              <span class="gentle-content-title">{{ $t('student.scorePanel.historyScore') }}</span>
             </div>
             <el-table :data="tableData" style="width: 100%">
               <el-table-column type="expand">
                 <template slot-scope="props">
                   <el-form class="penguin-table-expand" label-position="left" inline>
-                      <el-form-item label="題目名稱">
+                      <el-form-item :label="$t('problem.name')">
                         <span>{{ props.row.problemName }}</span>
                       </el-form-item>
-                      <el-form-item label="運行時間">
+                      <el-form-item :label="$t('problem.runTime')">
                         <span>{{ props.row.historyCode.slice(-1)[0].runTime }} ms</span>
                       </el-form-item>
-                      <el-form-item label="題目 ID">
+                      <el-form-item :label="$t('problem.id')">
                         <span>{{ props.row.problemId }}</span>
                       </el-form-item>
-                      <el-form-item label="難易度">
+                      <el-form-item :label="$t('problem.difficulty')">
                         <span><el-rate v-model="props.row.rate" disabled show-score text-color="#ff9900" score-template="{value}"></el-rate></span>
                       </el-form-item>
-                      <el-form-item label="正確率">
+                      <el-form-item :label="$t('problem.correctRate')">
                         <span>{{ parseInt(props.row.correctRate).toFixed(2) }}%</span>
                       </el-form-item>
-                      <el-form-item label="繳交日期">
+                      <el-form-item :label="$t('problem.handDate')">
                         <span>{{ props.row.historyCode.slice(-1)[0].handDate }}</span>
                       </el-form-item>
                   </el-form>
                 </template>
               </el-table-column>
-              <el-table-column label="題目ID" prop="problemId"></el-table-column>
-              <el-table-column label="題目名稱">
+              <el-table-column :label="$t('problem.id')" prop="problemId"></el-table-column>
+              <el-table-column :label="$t('problem.name')">
                 <template slot-scope="scope">
                   <a class="hyperlink" href="javascript:void(0)" @click="doProblem(scope.row)">{{ scope.row.problemName }}</a>
                   <el-tooltip class="item" effect="dark" content="最佳代碼！" placement="top">
@@ -75,12 +75,12 @@
                   </el-tooltip>
                 </template>
               </el-table-column>
-              <el-table-column label="類型">
+              <el-table-column :label="$t('problem.type')">
                 <template slot-scope="scope">
                   <el-tag :type="scope.row.type === '作業' ? 'danger' : 'success'" close-transition>{{scope.row.type}}</el-tag>
                 </template>
               </el-table-column>
-              <el-table-column label="分數">
+              <el-table-column :label="$t('problem.score')">
                 <template slot-scope="scope">
                   {{ scope.row.historyCode.slice(-1)[0].score }}
                 </template>

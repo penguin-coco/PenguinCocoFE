@@ -5,8 +5,8 @@
       <router-link :to="courseIndex"><img src="/static/logo/penguin.png"></router-link>
     </div>
     <el-menu class="oj-menu" :default-active="$route.path" mode="horizontal" router>
-      <el-menu-item index="/student/courseList" v-if="isCourseList" @click="cleanCourseInfo">課程列表</el-menu-item>
-      <el-button @click="logout" type="primary" round size="small" class="hidden-xs-only">Logout</el-button>
+      <el-menu-item index="/student/courseList" v-if="isCourseList" @click="cleanCourseInfo">{{ $t('student.header.courseList') }}</el-menu-item>
+      <el-button @click="logout" type="primary" round size="small" class="hidden-xs-only penguin-logout-btn">{{ $t('base.logout') }}</el-button>
       <el-button @click="logout" type="primary" round size="small" class="hidden-sm-only"><i class="fas fa-sign-out-alt"></i></el-button>
     </el-menu>
   </header>

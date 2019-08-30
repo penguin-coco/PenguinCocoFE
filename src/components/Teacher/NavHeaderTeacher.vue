@@ -7,7 +7,7 @@
     <div class="courseName">{{ this.$store.state.course.courseInfo.courseName }}</div>
     <el-menu class="oj-menu" mode="horizontal" router>
       <el-menu-item index="/teacher/courseList" @click="cleanCourseInfo">課程列表</el-menu-item>
-      <el-button @click="logout" type="primary" round size="small" class="hidden-xs-only">Logout</el-button>
+      <el-button @click="logout" type="primary" round size="small" class="hidden-xs-only penguin-logout-btn">Logout</el-button>
       <el-button @click="logout" type="primary" round size="small" class="hidden-sm-only"><i class="fas fa-sign-out-alt"></i></el-button>
     </el-menu>
   </header>
