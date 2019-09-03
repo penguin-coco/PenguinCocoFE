@@ -26,7 +26,7 @@
                 </el-option>
               </el-option-group>
             </el-select>
-            <el-table class="width-100" :data="tableFiltered" v-loading="tableLoading">
+            <el-table class="width-100" :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)" v-loading="tableLoading">
               <el-table-column label="題目 ID" prop="id"></el-table-column>
               <el-table-column label="題目名稱">
                 <template slot-scope="scope">
@@ -270,7 +270,7 @@ export default {
       let filteredTable = [];
 
       if (this.problemTagValue.length==0) {
-        this.total= oriTable.length; // pagination
+        this.total = oriTable.length; // pagination
         return oriTable;
       } else {
         for (let i=0; i<oriTable.length; i++) {
@@ -288,7 +288,7 @@ export default {
             filteredTable.push(oriTable[i]);
           }
         }
-        this.total= filteredTable.length; // pagination
+        this.total = filteredTable.length; // pagination
         return filteredTable;
       }
     },

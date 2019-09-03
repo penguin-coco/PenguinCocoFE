@@ -164,7 +164,7 @@ export default {
       let filteredTable = [];
 
       if (this.filterQuery == '') {
-        this.total= oriTable.length; // pagination
+        this.total = oriTable.length; // pagination
         return oriTable
       } else {
         for (let i = 0; i < oriTable.length; i++) {
@@ -172,7 +172,7 @@ export default {
             filteredTable.push(oriTable[i]);
           }
         }
-        this.total= filteredTable.length; // pagination
+        this.total = filteredTable.length; // pagination
         return filteredTable
       }
     }

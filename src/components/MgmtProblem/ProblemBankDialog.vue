@@ -3,7 +3,7 @@
   <el-dialog id="problemBankDialog" title="題庫列表" :visible.sync="myVisible" width="70vw" @close="closeDialog">
     <!-- search select -->
     <div v-if="viewProblemActive==false">
-      <el-select v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
+      <el-select class="mb-2 width-30" v-model="problemTagValue" multiple filterable allow-create default-first-option placeholder="請選擇題目標籤">
         <el-option-group
           v-for="group in quesTagOptions"
           :key="group.label"
@@ -16,7 +16,7 @@
           </el-option>
         </el-option-group>
       </el-select>
-      <el-table :data="tableFiltered" style="width: 100%;">
+      <el-table class="width-100" :data="tableFiltered.slice((currentPage-1)*pagesize,currentPage*pagesize)">
         <el-table-column label="題目 ID" prop="id"></el-table-column>
         <el-table-column label="題目名稱" prop="name"></el-table-column>
         <el-table-column label="題目類型" prop="category"></el-table-column>
@@ -29,12 +29,12 @@
         </el-table-column>
         <el-table-column label="操作" width="135">
           <template slot-scope="scope">
-            <el-button size="mini" @click="viewProblem(scope.row)" style="padding-right: 10px; padding-left: 10px; !important">檢視</el-button>
-            <el-button size="mini" type="primary" @click="importProblem(scope.row.id)" style="padding-right: 10px; padding-left: 10px; !important">匯入</el-button>
+            <el-button size="mini" class="pr-2 pl-2" @click="viewProblem(scope.row)">檢視</el-button>
+            <el-button size="mini" class="pr-2 pl-2" type="primary" @click="importProblem(scope.row.id)">匯入</el-button>
           </template>
         </el-table-column>
       </el-table>
-      <div style="text-align: center; margin-top: 30px; padding-bottom: 30px;">
+      <div class="text-center mt-6 pb-6">
         <el-pagination background layout="prev, pager, next" :total="total" @current-change="currentChange"></el-pagination>
       </div>
     </div>
@@ -85,8 +85,8 @@
             </el-col>
           </el-row>
           <el-row>
-            <el-button style="float:right;" type="primary" @click="importProblem('')">匯 入</el-button>
-            <el-button style="float:right; margin-right: 20px;" @click="viewProblemActive=false">返 回</el-button>
+            <el-button class="float-right" type="primary" @click="importProblem('')">匯 入</el-button>
+            <el-button class="float-right mr-4" @click="viewProblemActive=false">返 回</el-button>
           </el-row>
         </el-col>
       </el-row>
@@ -128,7 +128,7 @@ export default {
       let filteredTable = [];
 
       if (this.problemTagValue.length == 0) {
-        this.total= oriTable.length; // pagination
+        this.total = oriTable.length; // pagination
         return oriTable;
       } else {
         for (let i=0; i<oriTable.length; i++) {
