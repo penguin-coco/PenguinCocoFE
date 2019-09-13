@@ -31,6 +31,12 @@ import AssistantFeedback from '@/views/Assistant/AssistantFeedback'
 import QuesIndex from '@/views/Ques/QuesIndex'
 import QuesNewProblem from '@/views/Ques/QuesNewProblem'
 
+import AdminIndex from '@/views/Admin/AdminIndex'
+import AdminAddTeacherList from '@/views/Admin/AdminAddTeacherList'
+import AdminAddTAList from '@/views/Admin/AdminAddTAList'
+import AdminClassList from '@/views/Admin/AdminClassList'
+import AdminAddStudentList from '@/views/Admin/AdminAddStudentList'
+
 import ErrorPage403 from '@/components/Error/ErrorPage403.vue'
 import ErrorPage404 from '@/components/Error/ErrorPage404.vue'
 
@@ -153,6 +159,26 @@ export default new Router({
     {
       path: '/ques/newProblem',
       component: QuesNewProblem
+    },
+    {
+      path: '/admin/index',
+      component: AdminIndex
+    },
+    {
+      path: '/admin/addTeacherList',
+      component: AdminAddTeacherList
+    },
+    {
+      path: '/admin/addTAList',
+      component: AdminAddTAList
+    },
+    {
+      path: '/admin/classList',
+      component: AdminClassList
+    },
+    {
+      path: '/admin/addStudentList',
+      component: AdminAddStudentList
     },
     {
       name: '403',

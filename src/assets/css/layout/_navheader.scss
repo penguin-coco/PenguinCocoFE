@@ -23,11 +23,11 @@
   }
 
   .logo {
-    width:200px;
-    height:60px;
-    margin-left:0px;
-    text-align:center;
-    line-height:none;
+    width: 200px;
+    height: 60px;
+    margin-left: 0px;
+    text-align: center;
+    line-height: none;
     float: left;
 
     @if $auth == stud {
@@ -38,6 +38,8 @@
       background-color: $sidenav-asst-bgcolor;
     } @else if $auth == quesbk {
       background-color: $sidenav-quesbk-bgcolor;
+    } @else if $auth == admin {
+      background-color: $sidenav-admin-bgcolor;
     }
 
     @if $isLogoBorder {
@@ -113,4 +115,8 @@
 
 #navheader-quesbk {
   @include navheader-basic(quesbk, $isShadow:true);
+}
+
+#navheader-admin {
+  @include navheader-basic(admin, $isShadow:true);
 }
