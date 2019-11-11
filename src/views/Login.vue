@@ -79,7 +79,7 @@ export default {
   data() {
     // login-form
     return {
-      version: 'v1.0.5',
+      version: 'v1.0.6',
       // login form
       loginForm: {
         account: '',
