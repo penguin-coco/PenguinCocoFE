@@ -83,6 +83,15 @@ R.I.P CSIM OJ`
         content: `* 修正
   1. 題庫頁面分頁失效問題
   2. 老師助教從題庫匯入題目, 題庫彈窗分頁失效問題`
+      }, {
+        timestamp: '2019/11/11',
+        tag: 'v 1.0.6',
+        content: `## 優化Pattern UX
+* 新增
+  1. pattern錯誤提示
+  2. admin頁面(未實現功能)
+* 修正
+  1. student coding頁面，lang排版問題`
       }]
     }
   }

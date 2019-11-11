@@ -73,7 +73,7 @@
             <div class="coding-block">
               <div class="setting">
                 <span>Language:</span>
-                <el-select disabled v-model="nowLang" style="width: 130px;"></el-select>
+                <el-select style="width: 130px;" disabled v-model="nowLang"></el-select>
                 <span class="ml-2">Theme:</span>
                 <el-select v-model="nowTheme" @change="changeNowTheme" style="width: 130px;">
                   <el-option v-for="item in themes" :key="item" :label="item" :value="item">
@@ -539,8 +539,9 @@ public class Main {
         }).then(() => {
           // pattern檢查
           console.log('pattern:'+this.problem.pattern);
-          if (KeyPatUtil.isInRule(this.problem.pattern, this.code) == false) {
-            this.$message.error('程式碼內沒有包含pattern');
+          let patRuleResult = KeyPatUtil.isInRule(this.problem.pattern, this.code);
+          if (patRuleResult.isInclude == false) {
+            this.$message.error('程式碼內沒有包含第' + patRuleResult.errorNum + '項指定程式片段： ' + patRuleResult.errorPattern);
             return;
           }
 

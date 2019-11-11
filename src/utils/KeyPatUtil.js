@@ -49,20 +49,43 @@ export default class KeyPatUtil {
    * @desc 檢查程式碼是否包含某些字串. 檢查通過(包含)回傳true
    * @param {array} ruleArr 程式碼需包含的某些特定字串
    * @param {string} code 程式碼
-   * @return {array} keywords
+   * @return {boolean, string} isInclude, errorPattern
    */
   static isInRule(ruleArr, code) {
     if (ruleArr.length != 0) {
       let includeKeyFlag = true;
-      ruleArr.forEach((key) => {
-        if(code.indexOf(key)<0) includeKeyFlag=false;
-      });
 
-      if(includeKeyFlag) {
-        return true;
-      } else {
-        return false;
+      let errorNum = 0;
+      let errorPattern = '';
+      for(let i=0; i<ruleArr.length; i++) {
+        if(code.indexOf(ruleArr[i])<0) { // error, code沒有包含pattern
+          errorNum = i+1;
+          errorPattern = ruleArr[i];
+          includeKeyFlag = false;
+          break;
+        }
       }
+      // ruleArr.forEach((key) => { 
+        
+      // });
+
+      let obj = {
+        'isInclude': includeKeyFlag,
+        'errorNum': errorNum,
+        'errorPattern': errorPattern,
+      }
+      return obj;
+
+      // if(includeKeyFlag) {
+        
+      //   return obj;
+      // } else {
+      //   obj = {
+      //     'isInclude': '',
+      //     'errorPattern': errorPattern
+      //   }
+      //   return obj;
+      // }
     }
   }
 

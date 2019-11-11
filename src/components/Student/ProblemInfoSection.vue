@@ -67,7 +67,7 @@
       <el-row v-if="data.pattern.length>0">
         <el-col>
           <div class="problem-info">
-            <div class="title" style="color: #E6A23C;">Pattern (注意！程式碼必須包含這些程式片段！)</div>
+            <div class="title" style="color: #E6A23C;">程式指定片段 Pattern(注意！程式碼必須包含這些程式片段！)</div>
             <div class="content">
               <el-input type="textarea" readonly autosize :value="pat" resize="none" v-for="(pat, index) in data.pattern" :key="index" style="margin-bottom: 12px;"></el-input>
             </div>
