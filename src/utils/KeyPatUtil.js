@@ -65,9 +65,6 @@ export default class KeyPatUtil {
           break;
         }
       }
-      // ruleArr.forEach((key) => { 
-        
-      // });
 
       let obj = {
         'isInclude': includeKeyFlag,
@@ -75,17 +72,13 @@ export default class KeyPatUtil {
         'errorPattern': errorPattern,
       }
       return obj;
-
-      // if(includeKeyFlag) {
-        
-      //   return obj;
-      // } else {
-      //   obj = {
-      //     'isInclude': '',
-      //     'errorPattern': errorPattern
-      //   }
-      //   return obj;
-      // }
+    } else { // 沒有pattern
+      let obj = {
+        'isInclude': true,
+        'errorNum': null,
+        'errorPattern': null,
+      }
+      return obj;
     }
   }
 
