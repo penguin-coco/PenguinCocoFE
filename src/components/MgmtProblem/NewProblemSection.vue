@@ -51,7 +51,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="繳交期限">
-              <el-date-picker class="width-70" type="date" placeholder="選擇繳交期限" v-model="problemData.deadline" @change="selectDeadline"></el-date-picker>
+              <el-date-picker class="width-70" type="datetime" placeholder="選擇繳交期限" v-model="problemData.deadline" @change="selectDeadline"></el-date-picker>
             </el-form-item>
           </el-col>
         </el-row>
@@ -216,7 +216,7 @@ export default {
       this.problemData.description = e;
     }, 300),
     selectDeadline() {
-      this.problemData.previewDate = DateUtil.formatDate(this.problemData.deadline);
+      this.problemData.previewDate = DateUtil.formatDatetime(this.problemData.deadline);
     },
     // 討論題
     getStudsList() {

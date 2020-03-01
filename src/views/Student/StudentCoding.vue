@@ -417,7 +417,7 @@ public class Main {
           this.problem.type = res.result.type;
           this.problem.category = res.result.category;
           this.problem.tag = res.result.tag;
-          this.problem.deadline = res.result.deadline;
+          this.problem.deadline = DateUtil.formatDatetime(res.result.deadline);
           this.problem.description = res.result.description;
           this.problem.input = res.result.inputDesc;
           this.problem.output = res.result.outputDesc;
@@ -425,6 +425,8 @@ public class Main {
           this.problem.correctNum = parseInt(res.result.correctNum);
           this.problem.incorrectNum = parseInt(res.result.incorrectNum);
           this.problem.pattern = res.result.pattern;
+
+          console.log(res.result);
           
           this.setLanguage(this.problem.tag);
           this.checkJudged();

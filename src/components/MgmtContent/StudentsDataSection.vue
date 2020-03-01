@@ -12,7 +12,9 @@
       <el-table-column fixed prop="studentClass" label="系級" width="120"></el-table-column>
       <el-table-column :key="index" v-for="(problem, index) in formThead " :label="problem" width="120">
         <template slot-scope="scope">
-          <span>{{ scope.row.problems[index].historyCode.length!=0?scope.row.problems[index].historyCode.slice(-1)[0].score:'未作答' }}</span>
+          <!-- <span>{{ scope.row.problems[index].historyCode.length!=0?scope.row.problems[index].historyCode.slice(-1)[0].score:'未作答' }}</span> -->
+          <!-- NOTE: 20200208 未作答只顯示0分 -->
+          <span>{{ scope.row.problems[index].historyCode.length!=0?scope.row.problems[index].historyCode.slice(-1)[0].score:'0' }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -112,7 +114,9 @@ export default {
           if (el.problems[i].historyCode.length > 0) {
             temp[el.problems[i].name] = el.problems[i].historyCode.slice(-1)[0].score;
           } else {
-            temp[el.problems[i].name] = '未作答';
+            // temp[el.problems[i].name] = '未作答';
+            // NOTE: 20200208 未作答改成0分
+            temp[el.problems[i].name] = '0';
           }
         }
 

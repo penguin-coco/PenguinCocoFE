@@ -320,6 +320,8 @@ export default {
             editProblemData.testCases = res.result.testCases;
             editProblemData.keyword = res.result.keyword;
 
+            console.log(res.result);
+
             // 處理pattern格式(pat)
             let patternList = [];
             res.result.pattern.forEach((item) => {

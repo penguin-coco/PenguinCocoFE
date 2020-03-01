@@ -46,7 +46,7 @@
         </el-col>
         <el-col :span="6" :offset="1">
           <el-form-item label="題目期限">
-            <el-date-picker type="date" placeholder="選擇繳交期限" v-model="data.deadline" style="width: 100%;"></el-date-picker>
+            <el-date-picker type="datetime" placeholder="選擇繳交期限" v-model="data.deadline"></el-date-picker>
           </el-form-item>
         </el-col>
       </el-row>
@@ -230,14 +230,14 @@ export default {
             patternArray.push(element.pat);
           });
         }
-
+        
         axios.post('/api/problem/editProblem', {
           problemId: this.data.id,
           name: this.data.name,
           type: this.data.type,
           category: this.data.category,
           tag: this.data.tag,
-          deadline: DateUtil.formatDate(this.data.deadline),
+          deadline: DateUtil.formatDatetime(this.data.deadline),
           description: this.data.description,
           inputDesc: this.data.inputDesc,
           outputDesc: this.data.outputDesc,

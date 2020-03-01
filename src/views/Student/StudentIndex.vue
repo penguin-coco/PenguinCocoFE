@@ -241,7 +241,8 @@ export default {
       return DateUtil.dateDiff(sDate1, sDate2)
     },
     deadlineParse(deadline) { // 把deadline+1天
-      return DateUtil.nextDayDate(deadline)
+      return deadline
+      // return DateUtil.nextDayDate(deadline)
     },
     // go to problem
     doProblem(problemId) {

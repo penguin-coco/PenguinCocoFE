@@ -139,7 +139,7 @@ export default {
               let obj = {
                 studentId: id,
                 studentName: name,
-                score: '未作答'
+                score: '0' // NOTE: 20200208 未作答改成0分
               };
               tempTableData.push(obj)
             }
