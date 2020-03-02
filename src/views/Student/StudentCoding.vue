@@ -54,7 +54,7 @@
                         <template slot="title" :name="index">
                           樣本{{index+1}}
                         </template>
-                        <div class="mb-2">編譯結果：<el-tag type="warning" size="small">{{ judgedResultForm.symbol[index] }}</el-tag></div>
+                        <div class="mb-2">編譯結果：<el-tag style="white-space:pre-wrap;" type="warning" size="small">{{ judgedResultForm.symbol[index] }}</el-tag></div>
                         <!-- 如果有info顯示info, 無則顯示output -->
                         <el-input readonly type="textarea" autosize resize="none" :value="info" v-if="info"></el-input>
                         <el-input readonly type="textarea" autosize resize="none" :value="judgedResultForm.output[index]" v-else></el-input>
