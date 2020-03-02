@@ -54,7 +54,7 @@
       <el-row>
         <el-col :span="20" :offset="2" style="margin-bottom: 20px;">
           <el-form-item label="指定程式片段 (Pattern)" style="margin-bottom: 5px;">
-            <el-input v-model="pattern.pat" maxlength="15" placeholder="請輸入一段指定的程式碼" style="width: 100%; margin-bottom: 10px;" v-for="(pattern, index) in data.pattern" :key="index"></el-input>
+            <el-input v-model="pattern.pat" placeholder="請輸入一段指定的程式碼" style="width: 100%; margin-bottom: 10px;" v-for="(pattern, index) in data.pattern" :key="index"></el-input>
           </el-form-item>
           <el-button size="small" type="primary" plain @click="addPattern">+ 新增pattern</el-button>
           <el-button size="small" type="danger" plain @click="delPattern">- 移除pattern</el-button>
