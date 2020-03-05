@@ -340,20 +340,18 @@ public class Main {
       return chartData
     },
     // 判斷題目是否過期，過期則不給再提交
+    // FIXME: 
     isCanDoRepeat() {
       // 調用外部函示渲染太慢
       // return !DateUtil.isOverDate(this.problem.deadline)
 
-      let deadline = new Date(this.problem.deadline);
-      deadline.setDate(deadline.getDate() + 1);
-      let today = new Date();
+      let deadlineDatetime = new Date(this.problem.deadline);
+      let todayDatetime = new Date();
 
-      if(today.valueOf() > deadline.valueOf()) { // 過期
-        return false
+      if(todayDatetime.valueOf() > deadlineDatetime.valueOf()) { // 過期
+        return false // 不能顯示
       } else { // 沒過期
-        if(this.problem.judged==false || this.problem.type=='練習題' || this.problem.type=='作業') {
-          return true
-        }
+        return true
       }
     }
   },
@@ -425,8 +423,6 @@ public class Main {
           this.problem.correctNum = parseInt(res.result.correctNum);
           this.problem.incorrectNum = parseInt(res.result.incorrectNum);
           this.problem.pattern = res.result.pattern;
-
-          console.log(res.result);
           
           this.setLanguage(this.problem.tag);
           this.checkJudged();
@@ -540,11 +536,14 @@ public class Main {
           center: true
         }).then(() => {
           // pattern檢查
-          console.log('pattern:'+this.problem.pattern);
-          let patRuleResult = KeyPatUtil.isInRule(this.problem.pattern, this.code);
-          if (patRuleResult.isInclude == false) {
-            this.$message.error('程式碼內沒有包含第' + patRuleResult.errorNum + '項指定程式片段： ' + patRuleResult.errorPattern);
-            return;
+          console.log('pattern:' + this.problem.pattern);
+
+          if (this.problem.pattern.length > 0) {
+            let patRuleResult = KeyPatUtil.isInRule(this.problem.pattern, this.code);
+            if (patRuleResult.isInclude == false) {
+              this.$message.error('程式碼內沒有包含第' + patRuleResult.errorNum + '項指定程式片段： ' + patRuleResult.errorPattern);
+              return;
+            }
           }
 
           this.judging = true;

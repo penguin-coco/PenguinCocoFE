@@ -78,11 +78,10 @@ export default class DateUtil {
    * @return {boolean} 若過期則回傳true，否則false
    */
   static isOverDate(deadline) {
-    let deadlineDate = new Date(deadline);
-    deadlineDate.setDate(deadlineDate.getDate() + 1);
-    let todayDate = new Date();
+    let deadlineDatetime = new Date(deadline);
+    let todayDatetime = new Date();
 
-    if(todayDate.valueOf() > deadlineDate.valueOf()) { // 過期
+    if(todayDatetime.valueOf() > deadlineDatetime.valueOf()) { // 過期
       return true
     } else { // 沒過期
       return false

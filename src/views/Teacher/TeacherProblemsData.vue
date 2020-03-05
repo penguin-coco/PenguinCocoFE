@@ -163,7 +163,7 @@ export default {
       }).then((response) => {
         let res = response.data;
         if (res.status == '200') {
-          this.tableData = res.result;
+          this.tableData = res.result;;
           this.loading = false;
         }
       });

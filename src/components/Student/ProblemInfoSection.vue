@@ -58,7 +58,7 @@
           <div class="problem-info">
             <div class="title">Sample Output {{index+1}}</div>
             <div class="content">
-              <el-input type="textarea" readonly autosize v-model="item.outputSample" placeholder="請輸入內容" resize="none">
+              <el-input type="textarea" readonly autosize v-model="item.outputSample1" placeholder="請輸入內容" resize="none">
               </el-input>
             </div>
           </div>

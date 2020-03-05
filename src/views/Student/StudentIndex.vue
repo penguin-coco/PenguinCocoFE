@@ -72,7 +72,7 @@
                     </span>
                     <div class="bottom clearfix">
                       <el-rate class="rate" disabled :value="parseInt(problem.rate)"></el-rate>
-                      <Countdown v-if="dateDiff(todayDate, problem.deadline)<1" :deadline="deadlineParse(problem.deadline)"></Countdown>
+                      <Countdown v-if="dateDiff(todayDate, problem.deadline)<1" :deadline="problem.deadline"></Countdown>
                       <div v-if="dateDiff(todayDate, problem.deadline)>=1" class="time">{{ problem.deadline }}</div>
                     </div>
                     <div class="type">{{ problem.type }}</div>
@@ -240,10 +240,10 @@ export default {
     dateDiff(sDate1, sDate2) { // 兩日期天數差
       return DateUtil.dateDiff(sDate1, sDate2)
     },
-    deadlineParse(deadline) { // 把deadline+1天
-      return deadline
-      // return DateUtil.nextDayDate(deadline)
-    },
+    // deadlineParse(deadline) {
+    //   return deadline
+    //   // return DateUtil.nextDayDate(deadline) // 把deadline+1天
+    // },
     // go to problem
     doProblem(problemId) {
       this.$router.push('/student/'+ this.$store.state.course.courseInfo.courseName +'/coding?problemId=' + problemId);

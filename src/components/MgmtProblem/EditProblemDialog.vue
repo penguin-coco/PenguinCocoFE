@@ -87,10 +87,19 @@
             <el-input type="textarea" rows="5" resize="vertical" v-model="sample.inputSample"></el-input>
           </el-form-item>
         </el-col>
+
+        <!-- TODO: 介面輸出範例 -->
         <el-col :span="10" :offset="1">
           <el-form-item>
-            <span slot="label">輸出範例{{index+1}} (Output Sample{{index+1}})</span>
-            <el-input type="textarea" rows="5" resize="vertical" v-model="sample.outputSample"></el-input>
+            <span slot="label">介面輸出範例{{index+1}} (Output Sample{{index+1}})</span>
+            <el-input type="textarea" rows="5" resize="vertical" placeholder="請輸入題目的輸出範例" v-model="sample.outputSample1" style="width: 100%;"></el-input>
+          </el-form-item>
+        </el-col>
+        <!-- TODO: 系統輸出範例 -->
+        <el-col :span="10" :offset="12">
+          <el-form-item>
+            <span slot="label">系統輸出範例{{index+1}} (Output Sample{{index+1}})</span>
+            <el-input type="textarea" rows="5" resize="vertical" placeholder="請輸入題目的輸出範例" v-model="sample.outputSample2" style="width: 100%;"></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -180,7 +189,8 @@ export default {
     addSample() {
       let obj = {
         'inputSample': '',
-        'outputSample': ''
+        'outputSample1': '',
+        'outputSample2': ''
       }
       this.data.testCases.push(obj);
     },
